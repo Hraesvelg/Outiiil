@@ -1,0 +1,6 @@
+# Ignorer Fichier temporaire
+*~
+
+# Ignorer la DOC
+js/yuidoc.json
+js/out/*

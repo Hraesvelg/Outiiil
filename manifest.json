@@ -1,0 +1,73 @@
+{
+  
+	"manifest_version" 	: 2,
+	"name" 				: "Outiiil",
+	"version" 			: "1.4",
+	"description" 		: "Extension pour www.fourmizzz.fr.",
+	"icons" 			: {
+		"48" : "icons/gear_48.png",
+		"96" : "icons/gear_96.png"
+	},
+	
+	"browser_action"  	: {
+		"default_icon" : "icons/gear_48.png"
+	},
+  
+	"applications"		: {
+		"gecko" : {
+			"id" : "test@outiiil.fr",
+			"strict_min_version" : "45.0"
+		}
+	},
+  
+	"permissions" 		: ["http://*.fourmizzz.fr/*"],
+	"content_scripts" 	: [
+		{
+			"matches" : ["http://*.fourmizzz.fr/*"],
+			"js"	  : [
+				"content_scripts/lib/jquery_3.0.js",
+				"content_scripts/lib/jquery-ui_1.12.0.js", 
+				"content_scripts/lib/globalize_1.4.js", 
+				"content_scripts/lib/globalize.culture.fr.js", 
+				"content_scripts/lib/tablesorter_2.0.js",
+				"content_scripts/lib/numeral_1.5.3.js", 
+				"content_scripts/lib/moment_2.10.6.js",
+				"content_scripts/lib/moment.locale.js", 
+				"content_scripts/lib/lodash_4.13.1.js", 
+				"content_scripts/lib/highcharts_4.1.9.js", 
+				"content_scripts/class/Utils.js",
+				"content_scripts/class/Class.js",
+				"content_scripts/class/Armee.js", 
+				"content_scripts/class/Rapport.js",
+				"content_scripts/class/Boite.js",
+				"content_scripts/class/Page.js",
+				"content_scripts/boite/BoiteCommune.js", 
+				"content_scripts/boite/BoitePonte.js", 
+				"content_scripts/boite/BoiteRessource.js",
+				"content_scripts/boite/BoiteChasse.js", 
+				"content_scripts/boite/BoiteCombat.js", 
+				"content_scripts/boite/BoitePreference.js", 
+				"content_scripts/page/Alliance.js", 
+				"content_scripts/page/Armee.js", 
+				"content_scripts/page/Attaquer.js", 
+				"content_scripts/page/Chat.js", 
+				"content_scripts/page/Commerce.js", 
+				"content_scripts/page/Construction.js", 
+				"content_scripts/page/Description.js",
+				"content_scripts/page/Laboratoire.js", 
+				"content_scripts/page/Messagerie.js", 
+				"content_scripts/page/Profil.js", 
+				"content_scripts/page/Reine.js", 
+				"content_scripts/page/Ressource.js", 
+				"content_scripts/main.js"
+			],
+			"css" 	  : [
+				"content_css/reset.css",
+				"content_css/jquery-ui.css", 
+				"content_css/outiiil.css",
+				"content_css/plus.css"
+			]
+		}
+	]
+  
+}
