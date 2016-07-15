@@ -2,7 +2,7 @@
 
 <br/>
 
-[![Outiiil logo](./img/outiiil/header.png)](http://outiiil.fr)
+[![Outiiil logo](./img/header.png)](http://outiiil.fr)
 
 <br/>
 
@@ -19,13 +19,6 @@ lire le code et savent exactement ce que fait l'extension !
 Le projet attache également une grande importance quant à l'utilisation de vos données lié au jeu. 
 Outiiil fonctionne localement, il récupére des données de fàçon securisée seulement pour l'historique des joueurs et 
 pour gérer un eventuel utilitaire. **Aucunes** Données personnelles n'est stockées ailleurs que chez vous !
-
-### Quelques screens ###
-
-![Outiiil logo](./img/outiiil/screen1.png)
-![Outiiil logo](./img/outiiil/screen2.png)
-![Outiiil logo](./img/outiiil/screen3.png)
-![Outiiil logo](./img/outiiil/screen4.png)
 
 ## Contribuer ##
 
