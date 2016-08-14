@@ -34,14 +34,9 @@ var BoitePreference = Boite.extend({
 			// Position d'outiiil
 			+ "<tr><td class='left'>Position</td><td class='right'><select id='o_positionPref'><option value='0' " + (Utils.data.position == '0' ? "selected" : "") + ">Droite</option><option value='1' " + (Utils.data.position == '1' ? "selected" : "") + ">Bas</option></select></td></tr>"
 			+ "<tr><td colspan='2'><button id='o_savePref' class='o_marginT15'>Sauvegarder</button></td></tr>"
-			+ "</table>"
-			+ "<span class='o_titrePref'>Données</span>"
-			+ "<table class='o_tablePref'>"
-			+ "<tr><td class='left'>Utilitaire</td><td class='right'><input id='o_utilitairePref' type='text' placeholder='URL'/></td></tr>"
-			+ "<tr><td colspan='2'><button id='o_resetData' class='o_marginT15'>Effacer</button> <button id='o_saveData' class='o_marginT15'>Sauvegarder</button></td></tr>"
-			+ "</table>"
-			+ "</div>";
+			+ "</table></div>";
 		$("#o_boitePreference").append(this.html);
+        $("#o_themePref, #o_positionPref").outerWidth($("#o_color1Pref").outerWidth() + $("#o_defColor1").outerWidth() + 5);
 		
 		this.css();
 		this.event();
@@ -108,7 +103,7 @@ var BoitePreference = Boite.extend({
 		});
 		$("#o_color2Pref").change(function(){
 			Utils.data.couleur2 = $(this).val();
-			$(".o_item, .o_itemB, .o_closeElement, #o_ponteContent table tr:even, #o_tableLivraison tr:even, #o_tableCommande tr:even, #o_listeCommande table tr:even, #o_lanceurChasse tr:even, #o_resultatChasse tr:even, #o_recapChasse tr:even, #o_simulationChasse tr:even, #o_resultatCombat tr:even, #o_armeeAtt tr:even, #o_infoAtt tr:even, #o_profilJoueur tr:even, #o_tabsJoueur3 table tr:even, #o_profilAlliance tr:even, .o_tabs .ui-widget-header .ui-tabs-anchor").css("background-color", $(this).val()); 
+			$(".o_item, .o_itemB, .o_closeElement, #o_ponteContent table tr:even, #o_tableLivraison tr:even, #o_tableCommande tr:even, #o_listeCommande table tr:even, #o_resultatChasse tr:even, #o_resultatCombat tr:even, #o_tabsJoueur3 table tr:even, .o_tabs .ui-widget-header .ui-tabs-anchor").css("background-color", $(this).val()); 
 			$("#o_tableRess tr:nth-child(3n-2) td:first-child").css("border-bottom-color", $(this).val());
 			$(".o_titrePref, .o_tabs > .ui-widget-header").css("border-bottom-color", $(this).val());
 		});
