@@ -1,6 +1,9 @@
 # Ignorer Fichier temporaire
 *~
 
+# Ignorer documentation pour firefox
+FIREFOX
+
 # Ignorer la DOC
-js/yuidoc.json
-js/out/*
+content_scripts/yuidoc.json
+content_scripts/out/*
