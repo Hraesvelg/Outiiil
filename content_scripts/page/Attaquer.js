@@ -46,21 +46,8 @@ var PageAttaquer = Page.extend({
 			this.flooder();
 			this.getProfil();
 			
-			this.css();
 			this.event();
 		}
-	},
-	/**
-	* Applique le style propre à la page chargé.
-    *
-	* @private
-	* @method css
-	* @return 
-	*/
-	css : function()
-	{
-		$("#o_sondeTable tr:even, #o_infoAtt tr:even").css("background-color", Utils.data.couleur2);
-		$("#o_lanceurFlood tr:even, #o_simulationFlood tr:even").css("background-color", Utils.data.couleur2);
 	},
 	/**
 	* Ajoute les evenements propres à la page.
@@ -188,14 +175,14 @@ var PageAttaquer = Page.extend({
 	*/
 	flooder : function()
 	{
-		var html = "<fieldset id='o_prepaFlood'><legend><span class='titre'>Lanceur de Flood</span></legend><table id='o_lanceurFlood' cellspacing=0>"
-			+ "<tr><td colspan='2'><select id='o_methodeFlood'><option value='1'>Optimisée</option><option value='2'>Uniforme</option><option value='3'>Dégressive</option></select></td></tr>"
+		var html = "<fieldset id='o_prepaFlood' class='centre'><legend><span class='titre'>Lanceur de Flood</span></legend><table id='o_lanceurFlood' cellspacing=0>"
+			+ "<tr class='even'><td colspan='2'><select id='o_methodeFlood'><option value='1'>Optimisée</option><option value='2'>Uniforme</option><option value='3'>Dégressive</option></select></td></tr>"
 			+ "<tr><td>Nombre d'attaques</td><td><input value='0' size='12' id='o_floodNbr'/></td></tr>"
-			+ "<tr><td>Quantité par attaque</td><td><input value='0' size='12' id='o_floodQte'/></td></tr>"
+			+ "<tr class='even'><td>Quantité par attaque</td><td><input value='0' size='12' id='o_floodQte'/></td></tr>"
 			+ "<tr><td>Toute l'armée</td><td><input type='radio' name='o_allFlood' value='Oui' checked/> Oui <input type='radio' name='o_allFlood' value='Non' disabled/> Non</td></tr>"
-			+ "<tr><td>Flooder en dôme</td><td><input type='radio' name='o_domeFlood' value='Oui'/> Oui <input type='radio' name='o_domeFlood' value='Non' checked disabled/> Non</td></tr>"
+			+ "<tr class='even'><td>Flooder en dôme</td><td><input type='radio' name='o_domeFlood' value='Oui'/> Oui <input type='radio' name='o_domeFlood' value='Non' checked disabled/> Non</td></tr>"
 			+ "<tr><td>Synchroniser</td><td><input type='radio' name='o_syncFlood' value='Oui'/> Oui <input type='radio' name='o_syncFlood' value='Non' checked disabled/> Non</td></tr>"
-			+ "<tr><td>Retour le</td><td id='o_floodRetour'></td></tr>"
+			+ "<tr class='even'><td>Retour le</td><td id='o_floodRetour'></td></tr>"
 			+ "</table><table id='o_simulationFlood' class='o_maxWidth' cellspacing=0>"
 			+ "<tr class='gras'><td>Etape</td><td>Troupes</td><td>Mon Terrain</td><td>Cible</td></tr>"
 			+ "<tr><td colspan='2'></td><td><input value='" + Utils.terrain + "' size='12' id='o_floodTDCA'/></td><td><input value='0' size='12' id='o_floodTDCB'/></td></tr>"
@@ -285,8 +272,7 @@ var PageAttaquer = Page.extend({
 			}
 		}
 		$("#o_simulationFlood").append(simulation);
-		// Style preferentiel
-		$("#o_simulationFlood tr:even").css("background-color", Utils.data.couleur2);
+		$("#o_simulationFlood tr:even").addClass("even");
 	},
 	/**
 	* Envoie un flood.
