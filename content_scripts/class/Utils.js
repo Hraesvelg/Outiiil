@@ -12,7 +12,7 @@
  */
 var Utils = {
 	// Version de outiiil
-	version : "Outiiil 1.<span class='reduce'>4.0</span>",
+	version : "Outiiil 1.<span class='reduce'>4.1</span>",
 	// Url courante
 	uri : location.pathname,
 	// booleen si l'utilisateur à la compte+
