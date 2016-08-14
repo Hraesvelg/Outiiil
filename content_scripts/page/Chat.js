@@ -28,6 +28,15 @@ var PageChat = Page.extend({
 		this.emoticone();
 		// Reaffichage message
 		this.afficheMessage();
+        // Modification pour l'envoie du formulaire
+		$("#message").bind("keypress", function(e){
+			var code = e.keyCode || e.which; 
+			if(code == 13)
+				page.parseMessage();
+		});
+		$("input[name='Envoyer']").click(function(e){
+			page.parseMessage();
+		});
 	},
 	/**
 	* Change l'apparance de l'affichage des messages, "Pseudo (datetime) :" au lieu de "datetime pseudo :"
@@ -76,15 +85,6 @@ var PageChat = Page.extend({
 	{
 		// Bouton
 		this.bouton();
-		// Modification pour l'envoie du formulaire
-		$("#message").bind("keypress", function(e){
-			var code = e.keyCode || e.which; 
-			if(code == 13)
-				page.parseMessage();
-		});
-		$("input[name='Envoyer']").click(function(e){
-			page.parseMessage();
-		});
 	},
 	/**
 	* Parse le message pour convertir les smiley par le bbcode correspondant.
