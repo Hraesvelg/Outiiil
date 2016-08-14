@@ -26,11 +26,11 @@ var BoiteCombat = Boite.extend({
 			// Boite d'analyse
 			+ "<div id='o_tabsCombat1'></div>"
 			// Boite de simulation
-			+ "<div id='o_tabsCombat2'>" + (Utils.comptePlus ? "<p class='o_messNonC'>Cette section est en cours de développement.</p>" : "<p class='o_messNonC'>Vous devez disposez du <a href='/comptePlus.php'>Compte+</a> pour simuler des combats.</p>") + "</div>"
+			+ "<div id='o_tabsCombat2'><p class='o_messNonC'>Cette section est en cours de développement.</p></div>"
 			// Boite MF
-			+ "<div id='o_tabsCombat3'>" + (Utils.comptePlus ? "<p class='o_messNonC'>Cette section est en cours de développement.</p>" : "<p class='o_messNonC'>Vous devez disposez du <a href='/comptePlus.php'>Compte+</a> pour simuler des combats.</p>") + "</div>"
+			+ "<div id='o_tabsCombat3'><p class='o_messNonC'>Cette section est en cours de développement.</p></div>"
 			// Boite Calculatrice temps
-			+ "<div id='o_tabsCombat4'></div>"
+			+ "<div id='o_tabsCombat4'><p class='o_messNonC'>Cette section est en cours de développement.</p></div>"
 			+ "</div>";
 		$("#o_boiteCombat").append(this.html);
 		$("#o_tabs_combat").tabs();
