@@ -26,7 +26,7 @@ var BoiteChasse = Boite.extend({
 			// Boite d'analyse
 			+ "<div id='o_tabsChasse1'></div>"
 			// Boite de simulation
-			+ "<div id='o_tabsChasse2'>" + (Utils.comptePlus ? "<p class='o_messNonC'>Cette section est en cours de développement.</p>" : "<p class='o_messNonC'>Vous devez disposez du <a href='/comptePlus.php'>Compte+</a> pour simuler vos chasses.</p>") + "</div>"
+			+ "<div id='o_tabsChasse2'><p class='o_messNonC'>Cette section est en cours de développement.</p></div>"
 			+ "</div>";
 		$("#o_boiteChasse").append(this.html);
 		$("#o_tabsChasse").tabs();
