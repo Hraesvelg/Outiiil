@@ -4,6 +4,8 @@
  * version          1.4.0
  **********************************************************************/
 
+//usr/local/bin/php.TEST.5
+
 /**
  * Classe permettant de créer des classes proprement.
  * Cette classe permet l'heritage entre classe.
