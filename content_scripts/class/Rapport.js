@@ -166,7 +166,7 @@ var Rapport = Class.extend({
 					solution += bouclier + '/' + Math.round(lieu) + " - ";
 			}
 		}
-		return _.trimRight(solution, " - ");
+		return _.trimEnd(solution, " - ");
 	}
 });
 
