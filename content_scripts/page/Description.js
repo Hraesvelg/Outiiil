@@ -63,23 +63,35 @@ var PageDescription = Page.extend({
 			localStorage.setItem("outiiil_radar", JSON.stringify(Utils.radar));
 			boiteRadar.refreshBoite();
 		});
-		$("#niveaux").change(function(){$("#tabMembresAlliance th:nth-child(7), #tabMembresAlliance th:nth-child(8), #tabMembresAlliance td:nth-child(7), #tabMembresAlliance td:nth-child(8)").toggle();});
+		$("#niveaux").change(function(){
+            if(Utils.comptePlus)
+                $("#tabMembresAlliance th:nth-child(6), #tabMembresAlliance th:nth-child(7), #tabMembresAlliance td:nth-child(7), #tabMembresAlliance td:nth-child(8)").toggle();
+            else
+                $("#tabMembresAlliance th:nth-child(7), #tabMembresAlliance th:nth-child(8), #tabMembresAlliance td:nth-child(7), #tabMembresAlliance td:nth-child(8)").toggle();
+        });
 		$("#combats").change(function(){
-			if($("#tabMembresAlliance th:eq(8)").text() == "Combat")
-				$("#tabMembresAlliance th:nth-child(9), #tabMembresAlliance td:nth-child(9)").toggle();
-			else
+			if($("#tabMembresAlliance th:eq(8)").text() == "Combat" || (Utils.comptePlus && $("#tabMembresAlliance th:eq(7)").text() == "Combat")){
+				if(Utils.comptePlus)
+                    $("#tabMembresAlliance th:nth-child(8), #tabMembresAlliance td:nth-child(9)").toggle();
+                else
+                    $("#tabMembresAlliance th:nth-child(9), #tabMembresAlliance td:nth-child(9)").toggle();
+            }else
 				page.analyse();
 		});
 		$("#temps").change(function(){
 			// Si on a deja fait un analyse
-			if($("#tabMembresAlliance th:eq(9)").text() == "Tdt")
-				$("#tabMembresAlliance th:nth-child(10), #tabMembresAlliance th:nth-child(11), #tabMembresAlliance td:nth-child(10), #tabMembresAlliance td:nth-child(11)").toggle();
-			else
+			if($("#tabMembresAlliance th:eq(9)").text() == "Tdt" || (Utils.comptePlus && $("#tabMembresAlliance th:eq(8)").text() == "Tdt")){
+                if(Utils.comptePlus)
+                    $("#tabMembresAlliance th:nth-child(9), #tabMembresAlliance th:nth-child(10), #tabMembresAlliance td:nth-child(10), #tabMembresAlliance td:nth-child(11)").toggle();
+                else
+				    $("#tabMembresAlliance th:nth-child(10), #tabMembresAlliance th:nth-child(11), #tabMembresAlliance td:nth-child(10), #tabMembresAlliance td:nth-child(11)").toggle();
+            }
+            else
 				page.analyse();
 		});
 		$("#historique").click(function(){
 			$(this).attr("disabled", "disabled");
-			$(this).after("<div id='o_boiteAlliance' class='simulateur'><div class='o_rangeSelector cursor'><span id='o_selectHisto_1' class='active' data='30'>30J</span><span id='o_selectHisto_2' data='90'>90J</span><span id='o_selectHisto_3' data='180'>180J</span><span id='o_selectHisto_4' data='all'>Tout</span></div><div id='o_chartAlliance'></div></div>");
+			$(this).after("<div id='o_boiteAlliance' class='simulateur o_marginT15'><div class='o_rangeSelector cursor'><span id='o_selectHisto_1' class='active' data='30'>30J</span><span id='o_selectHisto_2' data='90'>90J</span><span id='o_selectHisto_3' data='180'>180J</span><span id='o_selectHisto_4' data='all'>Tout</span></div><div id='o_chartAlliance'></div></div>");
 			// Style preferentiel
 			$(".o_rangeSelector span.active").css("background-color", Utils.data.couleur2);
 			$(".o_rangeSelector span:not(.active)").css("background-color", Utils.data.couleur1);
@@ -194,15 +206,14 @@ var PageDescription = Page.extend({
 				$(".o_rangeSelector span.active").css("background-color", Utils.data.couleur2);
 			});
 			// Affichage d'un resultat sur 1 mois
-			var mouth = moment(), html = "<br/><div id='o_resultatAlliance' class='simulateur'><table cellspacing=0 class='centre'><tr class='gras'><td></td><td>Terrain</td><td>Fourmilière</td><td>Techologie</td><td>Membre</td></tr>";
-			html += "<tr><td>En cours</td><td>" + numeral(_.last(dataTerrain) - _.last(variation)[0]).format("+0,0") + " cm²</td><td>" + numeral(_.last(dataConstruction) - _.last(variation)[1]).format("+0,0") + "</td><td>" + numeral(_.last(dataTechno) - _.last(variation)[2]).format("+0,0") + "</td><td>" + (_.last(dataMembre) - _.last(variation)[3]) + "</td></tr>";
+			var mouth = moment(), html = "<br/><div id='o_resultatAlliance' class='simulateur'><table cellspacing=0 class='centre o_maxWidth'><tr class='gras even'><td></td><td>Terrain</td><td>Fourmilière</td><td>Techologie</td><td>Membre</td></tr>";
+            html += "<tr><td>En cours</td><td>" + numeral(_.last(dataTerrain) - _.last(variation)[0]).format("+0,0") + " cm²</td><td>" + numeral(_.last(dataConstruction) - _.last(variation)[1]).format("+0,0") + "</td><td>" + numeral(_.last(dataTechno) - _.last(variation)[2]).format("+0,0") + "</td><td>" + (_.last(dataMembre) - _.last(variation)[3]) + "</td></tr>";
 			for(var i = variation.length - 1 ; i > 0 ; i--){
-				html += "<tr><td>" + mouth.format("MMM YYYY") + "</td><td>" + numeral(variation[i][0] - variation[i - 1][0]).format("+0,0") + " cm²</td><td>" + numeral(variation[i][1] - variation[i - 1][1]).format("+0,0") + "</td><td>" + numeral(variation[i][2] - variation[i - 1][2]).format("+0,0") + "</td><td>" + (variation[i][3] - variation[i - 1][3]) + "</td></tr>";
+				html += "<tr " + (!(i % 2) ? "class='even'" : "") + "><td>" + mouth.format("MMM YYYY") + "</td><td>" + numeral(variation[i][0] - variation[i - 1][0]).format("+0,0") + " cm²</td><td>" + numeral(variation[i][1] - variation[i - 1][1]).format("+0,0") + "</td><td>" + numeral(variation[i][2] - variation[i - 1][2]).format("+0,0") + "</td><td>" + (variation[i][3] - variation[i - 1][3]) + "</td></tr>";
 				mouth.subtract(1, 'M');
 			}
 			html += "</table></div>";
 			$("#o_boiteAlliance").after(html);
-			$("#o_resultatAlliance table tr:even").css("background-color", Utils.data.couleur2);
 		});
 	},
 	/**
@@ -216,29 +227,27 @@ var PageDescription = Page.extend({
 	{
 		$("#tabMembresAlliance tr:first").append("<th>Combat</th><th title='Temps de Trajet'>Tdt</th><th>Retour</th>"); //style='width:60px'
 		$("#niveaux").attr("checked", false);
-		$("#tabMembresAlliance th:nth-child(7), #tabMembresAlliance th:nth-child(8), #tabMembresAlliance td:nth-child(7), #tabMembresAlliance td:nth-child(8)").toggle();
+        $("#niveaux").trigger("change");
 		$("#temps, #combats").attr("checked", "checked");
-		// Si j'ai pas encore chercher les temps
-		if(true == true){
-			var tempsMax = Math.ceil(Math.pow(0.9, Utils.data.niveauRecherche[6]) * 637200 * (1 - Math.exp(-(Math.sqrt(Math.pow(Utils.data.x - 0, 2) + Math.pow(Utils.data.y - 10000, 2))/350))));
-			var proche = tempsMax / 3, loin = 2 * tempsMax / 3;
-			$("#tabMembresAlliance tr:gt(0)").each(function(){
-				var elem = $(this);
-				$.get("/Membre.php?Pseudo=" + $(this).find("td:eq(2)").text(), function(data){
-					var parsed = $("<div/>").append(data);
-					var regexp = new RegExp("x=(\\d*) et y=(\\d*)");
-					var ligne  = parsed.find(".boite_membre a[href^='carte2.php?']").text();
-					var temps = Math.ceil(Math.pow(0.9, Utils.data.niveauRecherche[6]) * 637200 * (1 - Math.exp(-(Math.sqrt(Math.pow(Utils.data.x - ~~(ligne.replace(regexp, "$1")), 2) + Math.pow(Utils.data.y - ~~(ligne.replace(regexp, "$2")), 2))/350))));
-					var vac = parsed.find(".boite_membre table td:eq(0)").text().indexOf("Joueur en vacances") != -1, style = "";
-					if(temps <= proche && !vac) style = "class='marron'";
-					else if (temps > proche && temps <= loin && !vac) style = "class='marron_dark'" ;
-					elem.append("<td>" + parsed.find(".tableau_score:eq(0) tr:eq(4) td:eq(1)").text() + "</td><td><span " + style + ">" + Utils.intToTime(temps) + "</span></td><td>" + moment().add(temps, 's').format("D MMM à HH[h]mm") + "</td>");
-					if(vac){
-						elem.find("a").css("color", "blue");
-						elem.css("color", "blue");
-					}
-				});
-			});
-		}
+		
+		var tempsMax = Math.ceil(Math.pow(0.9, Utils.data.niveauRecherche[6]) * 637200 * (1 - Math.exp(-(Math.sqrt(Math.pow(Utils.data.x - 0, 2) + Math.pow(Utils.data.y - 10000, 2))/350))));
+        var proche = tempsMax / 3, loin = 2 * tempsMax / 3;
+        $("#tabMembresAlliance tr:gt(0)").each(function(){
+            var elem = $(this);
+            $.get("/Membre.php?Pseudo=" + $(this).find("td:eq(2)").text(), function(data){
+                var parsed = $("<div/>").append(data);
+				var regexp = new RegExp("x=(\\d*) et y=(\\d*)");
+				var ligne  = parsed.find(".boite_membre a[href^='carte2.php?']").text();
+				var temps = Math.ceil(Math.pow(0.9, Utils.data.niveauRecherche[6]) * 637200 * (1 - Math.exp(-(Math.sqrt(Math.pow(Utils.data.x - ~~(ligne.replace(regexp, "$1")), 2) + Math.pow(Utils.data.y - ~~(ligne.replace(regexp, "$2")), 2))/350))));
+				var vac = parsed.find(".boite_membre table td:eq(0)").text().indexOf("Joueur en vacances") != -1, style = "";
+				if(temps <= proche && !vac) style = "class='marron'";
+				else if (temps > proche && temps <= loin && !vac) style = "class='marron_dark'" ;
+				elem.append("<td>" + parsed.find(".tableau_score:eq(0) tr:eq(4) td:eq(1)").text() + "</td><td><span " + style + ">" + Utils.intToTime(temps) + "</span></td><td>" + moment().add(temps, 's').format("D MMM à HH[h]mm") + "</td>");
+				if(vac){
+				    elem.find("a").css("color", "blue");
+				    elem.css("color", "blue");
+				}
+            });
+        });
 	}
 });
