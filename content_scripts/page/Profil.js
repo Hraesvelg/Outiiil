@@ -62,6 +62,8 @@ var PageProfil = Page.extend({
 			$(".o_rangeSelector span:not(.active)").css("background-color", Utils.data.couleur1);
 			$(".o_rangeSelector span").css("border-color", Utils.data.couleur3);
 			page.historique();
+            $(this).off();
+            $(this).css("color", "#555555")
 		});
 		$("#surveiller").click(function(){
 			var login = $("h2").text();
@@ -126,11 +128,11 @@ var PageProfil = Page.extend({
 				tmpDate.add(1, "days");
 				html = ligne + html;
 			}
-			$("#o_boiteHistorique").append("<table class='o_historiqueAlliance' cellspacing=0><thead><tr class='gras'><th>Date</th><th>Alliance</th></tr></thead><tbody>" + html + "</tbody></table>");
-			// Style preferentiel
-			$(".o_historiqueAlliance tr:even").css("background-color", Utils.data.couleur2);
+			$("#o_boiteHistorique").append("<table class='o_historiqueAlliance' cellspacing=0><thead><tr class='gras even'><th>Date</th><th>Alliance</th></tr></thead><tbody>" + html + "</tbody></table>");
+            $(".o_historiqueAlliance tr:even").addClass("even");
+            // Si le tableau à plus de 9 lignes on ajoute une scrollbar
 			if($(".o_historiqueAlliance tr").length > 9)
-				$(".o_historiqueAlliance tr td:nth-child(2)").css({"width" : "67px", "padding-left" : "13px"});
+                $(".o_historiqueAlliance").fixedHeaderTable({footer: false, cloneHeadToFoot: false, fixedColumn: false, height:"225", width:"440"});
 			// Creation du graphique
 			var chart = new Highcharts.Chart({
 				chart : {
