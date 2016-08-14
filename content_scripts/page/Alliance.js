@@ -69,3 +69,14 @@ var PageAlliance = Page.extend({
 		});
 	}
 });
+
+//        
+//        $.ajax({
+//            type : "post",
+//			url     : "/alliance.php?forum_menu",
+//            data    : {"xajax":"callGetTopic","xajaxargs[]":"42796"},
+//            dataType: "xml",
+//			success : function(data){
+//				alert($(data).find("cmd").text());
+//			}
+//		});
