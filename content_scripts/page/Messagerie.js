@@ -24,6 +24,8 @@ var PageMessagerie = Page.extend({
 		var rp = 0, messagesAnalyse = {};
 		// Listener pour l'ouverture des rapports de combat ou de chasse.
 		$("#corps_messagerie").on("DOMNodeInserted", function(e){
+            // Correction du style
+            $("button[id^='supprimer']").removeClass("ui-button");
 			// Si on ouvre le message pour la première fois
 			if($(e.target).hasClass("contenu_conversation")){
 				// Si on est sur des rapports des chasses
@@ -104,6 +106,7 @@ var PageMessagerie = Page.extend({
 			if(titre.indexOf("Colonie conquise") != -1 || titre.indexOf("Butin") != -1)
 				$(this).find("td:eq(3)").children().addClass("green");
 		});
+        
 	},
 	/**
 	* Affiche le resultat de l'analyse d'un rapport de combat.
@@ -120,8 +123,8 @@ var PageMessagerie = Page.extend({
 		message += "<p class='small'>HoF : " + Utils.intToTime((combat.armee1.getTemps(0) - combat.armee1Pe.getTemps(0)) + (combat.armee2.getTemps(0) - combat.armee2Pe.getTemps(0))) + "<br/>Ennemie : " + Utils.intToTime(combat.armee2.getTemps(0) - combat.armee2Pe.getTemps(0)) + " - Vous : " + Utils.intToTime(combat.armee1.getTemps(0) - combat.armee1Pe.getTemps(0)) + "</p>";
 		// Affichage des Niveaux
 		message += "<span style='text-decoration:underline;' class='gras'>Niveau(x)</span><br/><p>";
-		if(combat.bonusVie2)
-			message += "Bouclier (/ Lieu) : " + combat.bonusVie2 + " | ";
+		if(combat.bonusVie2) 
+            message += "Bouclier (/ Lieu) : " + combat.bonusVie2 + " | ";
 		message += "Armes : " + combat.bonusAtt2;
 		if(combat.armee1.getSommeUnite() < 1000 || combat.armee2.getSommeUnite() < 1000) 
 			message += " <img src='images/attention.gif' alt='attention' title='les unitées sont peut être insuffisantes pour être sur' class='o_vAlign'/> ";
