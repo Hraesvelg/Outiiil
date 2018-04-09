@@ -1,9 +1,7 @@
 # Ignorer Fichier temporaire
 *~
 
-# Ignorer documentation pour firefox
-FIREFOX
-
-# Ignorer la DOC
-content_scripts/yuidoc.json
-content_scripts/out/*
+# Ignorer les fichiers pour contruire la version de production
+build.sh
+Outiiil.zip
+./prod
