@@ -1,0 +1,688 @@
+/***********************************************************************
+ *                                                                     *
+ *     CSS générique des éléments d'Outiiil                            *
+ *                                                                     *
+ **********************************************************************/
+
+ /* couleur */
+.black {color:#000;}
+.green {color:green!important;}
+.green_light {color:#77ff4d}
+.red {color:#c5130f!important;}
+.red_light {color:#ff4d4d}
+.red_xlight {color:#ff8579}
+.blue {color:blue;}
+.blue_light {color:#3DA7CD!important;}
+.orange {color:#9c4b00;}
+.violet {color:#6d3a8a}
+.marron {color:#ab6100;}
+.marron_dark {color:#532f01;}
+/* formatage texte */
+.centre {text-align:center;}
+.left {text-align:left;}
+.right {text-align:right;}
+.small {font-size:0.8em;}
+.reduce {font-size:0.9em!important;}
+.souligne:hover {text-decoration:underline;}
+.gras {font-weight:bold!important;}
+/* display */
+.o_marginT0{margin-top:0;}
+.o_marginT15{margin-top:15px!important;}
+.o_maxWidth {width:100%;}
+.cursor {cursor:pointer;}
+.cursor_copy {cursor:copy;}
+.clear {clear:both;}
+/* form */
+input[type=button][disabled], button[disabled] {color:#c0c0c0;}
+input[type=checkbox], input[type=radio], .o_vAlign {vertical-align:middle;position:relative;bottom:1px;}
+input[type=radio] {bottom:2px;}
+input[type=number] {width:175px;}
+select {font-size : 1em;}
+textarea {-moz-box-sizing:border-box;}
+input:required, select:required {box-shadow:none;}
+
+/***********************************************************************
+ *                                                                     *
+ *     CSS particulier des éléments d'Outiiil                          *
+ *                                                                     *
+ **********************************************************************/
+
+.f_success
+{
+	color: #3c763d;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+}
+.f_error
+{
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+.f_warning
+{
+	background-color: #fcf8e3;
+    border-color: #faebcc;
+    color: #8a6d3b;
+}
+.f_info
+{
+	background-color: #d9edf7;
+    border-color: #bce8f1;
+    color: #31708f;
+}
+/* Highlight effect */
+.highlight_error
+{
+    animation : HighlightError 3s linear infinite;
+}
+@keyframes HighlightError
+{
+    0% {box-shadow : none;}
+    50% {box-shadow : 0px 0px 1px 1px #ff8579;}
+    100% {box-shadow : none;}
+}
+
+.highlight_success
+{
+    animation : HighlightSuccess 3s linear infinite;
+}
+@keyframes HighlightSuccess
+{
+    0% {box-shadow : none;}
+    50% {box-shadow : 0px 0px 1px 0px #9bff79;}
+    100% {box-shadow : none;}
+}
+
+/* bouton groupé */
+.o_group_bouton
+{
+	display : inline-block;
+    position : relative;
+    border : 1px solid #665832;
+}
+.o_group_bouton > span:not(:last-child) {border-right:solid 1px #A98D43;}
+/* Formualire */
+.group
+{
+	position:relative;
+	width : 250px;
+	margin-top:30px;
+    margin-left:10px;
+}
+.o_button
+{
+	cursor : pointer;
+    font-size : 1.1em;
+    padding : 6px 20px;
+    border-width : 0px;
+    transition : box-shadow 0.5s ease-in-out;
+}
+.o_button:hover
+{
+    box-shadow: inset 0px 0px 10px 0px #aba;
+}
+.o_input
+{
+	background-color:inherit;
+	font-size:15px;
+	padding:10px 10px 10px 5px;
+	display:block;
+	width:250px;
+	border:none;
+	border-bottom:1px solid #757575;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+.o_input:focus
+{
+    outline:none;
+}
+.o_checkbox
+{
+    float:right;
+}
+.o_number
+{
+    width:100%;
+}
+.o_number > input
+{
+    width:100%;
+}
+.o_inputColor
+{
+    position : absolute;
+    right:5px;
+	top:10px;
+}
+.o_label
+{
+	font-size:15px;
+	font-weight:normal;
+	position:absolute;
+	pointer-events:none;
+	left:5px;
+	top:10px;
+	transition:0.2s ease all;
+}
+.o_input:focus ~ .o_label, .o_input:valid ~ .o_label
+{
+	top:-20px;
+	font-size:12px;
+}
+.o_inputBar
+{
+    position:relative;
+    display:block;
+    width:250px;
+}
+.o_inputBar:before, .o_inputBar:after
+{
+	content:'';
+	height:2px;
+	width:0;
+	bottom:1px;
+	position:absolute;
+	background:#5264AE;
+	transition:0.2s ease all;
+}
+.o_inputBar:before
+{
+    left:50%;
+}
+.o_inputBar:after
+{
+    right:50%;
+}
+.o_input:focus ~ .o_inputBar:before, .o_input:focus ~ .o_inputBar:after
+{
+    width:50%;
+}
+.o_inputHighlight
+{
+	position:absolute;
+	height:60%;
+	width:100px;
+	top:25%;
+	left:0;
+	pointer-events:none;
+	opacity:0.5;
+}
+#o_divccarmee
+{
+    z-index: 30000;
+}
+
+/***********************************************************************
+ *                                                                     *
+ *     CSS pour les boites                                             *
+ *                                                                     *
+ **********************************************************************/
+
+/* Boite Compte + */
+#boiteComptePlus .mini_icone_ponte, #boiteComptePlus .mini_icone_construction, #boiteComptePlus .mini_icone_recherche,
+#boiteComptePlus .mini_icone_attaque, #boiteComptePlus .mini_icone_convoi, #boiteComptePlus .mini_icone_chasse
+{
+	position:relative;
+	z-index:100;
+}
+.o_labelBoite
+{
+	position:absolute;
+	left:40px;
+	top:3px;
+	white-space:nowrap;
+}
+.o_labelTempsBoite
+{
+	position:absolute;
+	right:10px;
+	top:3px;
+}
+#o_progressUnite, #o_progressConstruction, #o_progressRecherche, #o_progressAttaque, #o_progressConvoi, #o_progressChasse
+{
+	width : 94%;
+	position : absolute;
+	top : 18px;
+	height : 4px;
+	border : 1px solid #454738;
+	background : #676b51;
+}
+#boiteComptePlus .ui-progressbar-value
+{
+	background:#2EBF23 !important;
+	opacity:0.50;
+}
+#recherche
+{
+	width:95%;
+	text-align:center;
+	height: 24px;
+	font-size:1em;
+}
+#o_titleConvoi img
+{
+    vertical-align: middle;
+}
+
+/* Boite Radar */
+#o_radar td:nth-child(1)
+{
+    width:28px;
+}
+#o_radar td:nth-child(2)
+{
+	max-width:80px;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	white-space:nowrap;
+}
+.o_actualiser
+{
+    -webkit-filter:contrast(0%);
+    filter:contrast(0%);
+    transition:filter 0.4s linear;
+    outline: 0;
+}
+.o_actualiser:hover
+{
+    -webkit-filter:contrast(100%);
+    filter:contrast(100%);
+}
+.o_actualiser > img
+{
+    outline: 0;
+    vertical-align: middle;
+}
+.o_radarPlaceholder
+{
+    background-color : #676b51;
+}
+
+/* toolbar avec les outils */
+#o_toolbarOutiiil
+{
+	position : fixed;
+	background-color : rgba(82, 85, 57,0.5);
+    padding : 3px 0 0 3px;
+    z-index : 30000;
+}
+.o_toolbarDroite
+{
+    width : 50px;
+	height : 100%;
+    top : 0;
+	right : 0;
+    border-left : 2px solid #525543;
+}
+.o_toolbarBas
+{
+    width : 100%;
+	height : 50px;
+    bottom : 0;
+    border-top : 2px solid #525543;
+}
+#o_toolbarOutiiil .o_toolbarItem
+{
+    display : inline-block;
+	background-color : rgba(82, 85, 57,0.6);
+	border : 1px solid #525543;
+	width : 45px;
+	height : 45px;
+	cursor : pointer;
+	box-shadow: inset 0px 0px 5px 0px #656565;
+	border-radius : 4px;
+	transition : box-shadow 0.5s ease-in-out;
+}
+#o_toolbarOutiiil .o_toolbarItem:hover
+{
+	box-shadow: inset 0px 0px 4px 2px #9c9c9c;
+}
+#o_toolbarOutiiil .o_toolbarItem span
+{
+	background-size : 304px 432px;
+	display : block;
+	width : 31px;
+	height : 34px;
+	margin : 5px 7px;
+}
+#o_toolbarOutiiil .o_toolbarItem #o_itemPonte
+{
+    background-position:0 -2px;
+}
+#o_toolbarOutiiil .o_toolbarItem #o_itemChasse
+{
+    background-position:-97px -42px;
+}
+#o_toolbarOutiiil .o_toolbarItem #o_itemCombat
+{
+    background-position:0 -160px;
+}
+#o_toolbarOutiiil .o_toolbarItem #o_itemTraceur
+{
+    background-position:-32px -238px;
+}
+#o_toolbarOutiiil .o_toolbarItem #o_itemMap
+{
+    background-position:0 -278px;
+}
+#o_toolbarOutiiil .o_toolbarItem #o_itemParametre
+{
+    background-position:-32px -278px;
+}
+
+/* Titre des boites */
+.o_titre
+{
+	display:block;
+	font-size:1.5em;
+	margin-bottom:10px;
+}
+.o_titre:hover
+{
+   cursor:all-scroll;
+}
+
+/* Contenues des boites */
+.o_content
+{
+	position : fixed;
+	border-radius:5px;
+    -moz-box-sizing: border-box;
+    box-sizing:border-box;
+	box-shadow: 0px 0px 10px 3px #000;
+    min-width:40%;
+    border:3px solid;
+	text-align : center;
+	z-index : 25000;
+	padding : 8px 0px;
+	display : none;
+    font-size: 0.9em;
+}
+.o_content table
+{
+    border-collapse:collapse;
+}
+
+/* Bouton de fermeture des boites */
+.o_close
+{
+	width:20px;
+	height:20px;
+	position:absolute;
+	top:10px;
+	right:20px;
+	cursor:pointer;
+}
+.o_close b
+{
+	display:block;
+	border:solid 10px rgba(255,255,255,0);
+	position:absolute;
+}
+.o_close b:nth-child(1) {top:-2px;}
+.o_close b:nth-child(2) {left:-2px;}
+.o_close b:nth-child(3) {bottom:-2px;}
+.o_close b:nth-child(4) {right:-2px;}
+
+/* Lanceur de ponte */
+#o_boitePonte table tr {height:25px}
+#o_boitePonte table tr td:nth-child(1) {width:90px}
+#o_boitePonte table tr td:nth-child(2) {width:60px}
+#o_boitePonte table tr td:last-child {width:40px}
+
+/* Chasse - Combat */
+#o_boiteChasse, #o_boiteCombat {min-width:50%;}
+#o_rcChasse, #o_rcCombat {height:160px;resize:none;}
+#o_resultatChasse tr, #o_resultatCombat tr {height:20px;}
+#o_simulateur {width:100%}
+#o_simulateur .entete {border-bottom:1px solid;}
+#o_simulateur .entete td {padding-bottom:6px;}
+#o_simulateur .entete + tr td {padding-top:10px;}
+#o_simulateurNiveau tr {height : 20px;}
+#o_simulateurArmee tr:nth-last-child(n + 3) td:nth-child(2), #o_simulateurNiveau td:nth-child(2) {padding-right:8px;padding-left:8px;}
+#o_switchAvantApres {padding-bottom:8px;cursor:pointer;font-size: 0.9em;font-style: italic;}
+#o_switchAvantApres:hover {text-decoration:underline;}
+#o_positionJoueur{width:50px;margin:auto;}
+#o_calculatriceCombat {width : 100%;}
+#o_calculatriceCombat tr {height: 22px}
+
+/* Traceur */
+#o_infosTraceurJoueur.dataTable td, #o_infosTraceurAlliance.dataTable td {padding : 4px 10px;}
+
+/* Map */
+#o_boiteMap {min-width:70%;min-height:60%}
+#o_recupererMap {margin-top:20%;}
+
+/* Parametre */
+#o_boiteParametre {min-width:40%;}
+#o_tabsParametre1, #o_tabsParametre2, #o_tabsParametre3 {max-height: 50vh;overflow-y:auto;}
+
+/* Commande - Rang */
+.o_rangForm, .o_commandeForm {margin-top:40px;}
+.o_commandeForm .group, .o_rangForm .group {margin:30px auto 0;}
+#o_boiteGuerre, .o_content[id^=o_boiteRang], .o_content[id^=o_boiteCommande] {min-width: 500px;}
+
+/* Rapport */
+.o_content[id^=o_boiteRapport] {max-width: 45%;padding-right: 10px;padding-left: 10px;}
+.o_contentRapport {max-height: 20%; overflow-y: auto;}
+
+/***********************************************************************
+ *                                                                     *
+ *     CSS pour les elements dans les pages de fourmizzz               *
+ *                                                                     *
+ **********************************************************************/
+
+/* Page reine */
+input[id^="input_cout_nombre"], input[id^="input_cout_temps"], input[id^="input_cout_nourriture"] {border-width : 2px;}
+
+/* Page arméee */
+#o_replaceArmee {margin-bottom : 5px;}
+
+/* Lanceur de Chasse, page : Ressource.php */
+#o_prepaChasse
+{
+    width:728px;
+    padding:25px;
+    -moz-box-sizing: border-box;
+    box-sizing:border-box;
+}
+#o_chasseTDCRepAuto, #o_chasseNbrAuto {vertical-align:bottom;margin-right:3px;}
+#o_lanceurChasse tr {height:25px;}
+#o_recapChasse {width:60%;margin:15px auto 0;}
+#o_recapChasse tr, #o_simulationChasse tr {height:20px;}
+#o_simuChasse {max-width:auto;overflow-x:auto;}
+#o_simulationChasse td {padding:0 5px;}
+
+/* Lanceur de flood, page : ennemie.php?Attaquer=... */
+#o_simulationFlood tr {height:22px;}
+#o_btnSynchro, #o_btnLancer{display:inline-block;}
+#o_btnLancer{float:right;}
+#o_synchro{margin-top:10px;}
+#o_sonder{margin-left:10px;}
+#o_tableStatArmee td:nth-child(2){padding-left:10px;padding-right:10px}
+#tabChoixArmee {width:100%;}
+
+/* Historique joueur ou alliance, page : Membre.php?Pseudo=.. */
+#o_historiqueAlliance tr th, #o_historiqueAlliance tr td
+{
+	padding:0px 5px;
+	height:25px;
+    -moz-box-sizing: border-box;
+	box-sizing:border-box;
+}
+#o_chartAlliance, #o_chartJoueur {min-height:40px;}
+#o_bouton_alliance {float:left;margin-top:10px;}
+#o_bouton_range {float:right;}
+
+/* Page Chat */
+#color {padding:2px;width:46px;height:26px;}
+.o_group_bouton_chat {margin-left : 6px;background: linear-gradient(to bottom, rgba(215,195,132,1) 0%, rgba(201,173,99,1) 49%, rgba(215,195,132,1) 50%, rgba(215,195,132,1) 100%);}
+.o_group_bouton_chat span {padding : 4px 10px;}
+.o_group_bouton_chat span:hover {background: linear-gradient(to bottom, rgba(215,195,132,1) 0%, rgba(215,195,132,1) 50%, rgba(201,173,99,1) 51%, rgba(215,195,132,1) 100%);}
+
+/* Page messagerie */
+.o_tabAnalyse, .o_tabTDP {border-collapse: collapse;border-spacing:10px!important;}
+.o_tabTDP tr:nth-child(1) {border-bottom:1px solid #000;}
+.o_tabTDP td {padding : 0 5px;}
+#o_msg_bouton1, #o_msg_bouton2 {display:inline-block;}
+.o_group_bouton_mess {position:relative;float:right;border:1px solid #bd8d46;margin-top:10px;border-radius:2px;padding:2px 12px;}
+
+/* Page alliance */
+#tabMembresAlliance thead th, #tabMembresAlliance thead td {padding:10px;}
+center > div > #tabMembresAlliance {width:calc(100% - 20px);}
+#o_historique > img, #o_surveiller > img, #o_analyser > img {vertical-align: middle;}
+#o_historique, #o_surveiller, #o_analyser {height:20px;}
+
+/* Page forum */
+.o_forumOption {border:solid;border-width:1px;padding:2px 6px 1px;margin:0px 5px;position:float;float:right}
+.o_prepareUtilitaire {z-index: 5; border: 1px solid; margin-left: 10px; padding: 4px; text-align: right; position: absolute; right: 0px; top: 30px; display: none;}
+
+/* Correctif jquerui pour outiiil */
+.ui-tooltip
+{
+	opacity:1!important;
+	max-width:400px!important;
+}
+.ui-tooltip-lightBrown
+{
+	background-color: #d7c384!important;
+}
+.ui-tooltip-right::after, .ui-tooltip-left::after, .ui-tooltip-bottom::after, .ui-tooltip-top::after
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    display: block;
+    width: 0;
+}
+.ui-tooltip-right::after
+{
+    top: calc(50% - 8px);
+    left: -8px;
+    border-color: transparent #676b51;
+    border-width: 8px 8px 8px 0;
+}
+.ui-tooltip-left::after
+{
+    top: calc(50% - 8px);
+    right: -8px;
+    border-color: transparent #676b51;
+    border-width: 8px 0 8px 8px;
+}
+.ui-tooltip-top::after
+{
+    bottom: -8px;
+    left: 72px;
+    border-color: #676b51 transparent;
+    border-width: 8px 8px 0;
+}
+.ui-tooltip-bottom::after
+{
+    top: -8px;
+    left: 72px;
+    border-color: #676b51 transparent;
+    border-width: 0 8px 8px;
+}
+.ui-tooltip-brown::after
+{
+    border-color: transparent #d7c384;
+}
+.ui-spinner-input
+{
+	height : 20px;
+    margin-top : 0;
+    outline: 0!important;
+	text-align : left!important;
+	font-size : 0.9em!important;
+}
+.ui-button-icon-only
+{
+	width: 2em;
+	box-sizing: border-box;
+	text-indent: -9999px;
+	white-space: nowrap;
+}
+.ui-button-icon-only .ui-icon
+{
+	position : absolute!important;
+	top : 50%!important;
+	left : 50%!important;
+}
+.ui-datepicker, .ui-autocomplete.ui-widget
+{
+	font-size:11px!important;
+    z-index:25001!important;
+}
+.ui-tabs .ui-tabs-nav
+{
+	font-size: 10.8px!important;
+}
+.o_tabs.ui-widget-content
+{
+    background:none;
+    border:none;
+    margin-bottom:0!important;
+}
+.o_tabs > .ui-widget-content
+{
+	padding-bottom:0!important;
+}
+.o_tabs > .ui-widget-header
+{
+	border-top:none;
+	border-left:none;
+	border-right:none;
+    border-bottom:1px solid;
+    background:none;
+}
+.o_tabs > .ui-corner-all
+{
+    -moz-border-radius:0;
+    -webkit-border-radius:0;
+    border-radius:0;
+}
+.o_tabs .ui-widget-header .ui-state-default, .o_tabs .ui-widget-header .ui-tabs-active
+{
+	border:none;
+	background:none;
+}
+
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { float: left; clear:left; padding: 0 0 0 5px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 40%; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+.ui-timepicker-div .ui_tpicker_unit_hide{ display: none; }
+
+.ui-timepicker-div .ui_tpicker_time .ui_tpicker_time_input { background: none; color: inherit; border: none; outline: none; border-bottom: solid 1px #555; width: 95%; }
+.ui-timepicker-div .ui_tpicker_time .ui_tpicker_time_input:focus { border-bottom-color: #aaa; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; padding: 0 5px 0 0; }
+.ui-timepicker-rtl dl dt{ float: right; clear: right; }
+.ui-timepicker-rtl dl dd { margin: 0 40% 10px 10px; }
+
+/* Shortened version style */
+.ui-timepicker-div.ui-timepicker-oneLine { padding-right: 2px; }
+.ui-timepicker-div.ui-timepicker-oneLine .ui_tpicker_time,
+.ui-timepicker-div.ui-timepicker-oneLine dt { display: none; }
+.ui-timepicker-div.ui-timepicker-oneLine .ui_tpicker_time_label { display: block; padding-top: 2px; }
+.ui-timepicker-div.ui-timepicker-oneLine dl { text-align: right; }
+.ui-timepicker-div.ui-timepicker-oneLine dl dd,
+.ui-timepicker-div.ui-timepicker-oneLine dl dd > div { display:inline-block; margin:0; }
+.ui-timepicker-div.ui-timepicker-oneLine dl dd.ui_tpicker_minute:before,
+.ui-timepicker-div.ui-timepicker-oneLine dl dd.ui_tpicker_second:before { content:':'; display:inline-block; }
+.ui-timepicker-div.ui-timepicker-oneLine dl dd.ui_tpicker_millisec:before,
+.ui-timepicker-div.ui-timepicker-oneLine dl dd.ui_tpicker_microsec:before { content:'.'; display:inline-block; }
+.ui-timepicker-div.ui-timepicker-oneLine .ui_tpicker_unit_hide,
+.ui-timepicker-div.ui-timepicker-oneLine .ui_tpicker_unit_hide:before{ display: none; }
+/* Fichier css pour chrome */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{
+	.ui-tabs .ui-tabs-nav {padding : 0px!important;}
+}
