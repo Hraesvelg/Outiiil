@@ -2,10 +2,6 @@
 
 <br/>
 
-[![Outiiil logo](./img/header.png)](http://outiiil.fr)
-
-<br/>
-
 ## Outiiil ##
 
 Outiiil est un projet destiné à ameliorer la qualité du jeu [Fourmizzz](http://fourmizzz.fr). Fourmizzz
