@@ -12,7 +12,7 @@ class Dock
         /**
         *
         */
-        this._html = `<div id="o_toolbarOutiiil" class="${monProfil.parametre["toolbarPosition"].valeur == "1" ? "o_toolbarBas" : "o_toolbarDroite"}" ${monProfil.parametre["toolbarVisible"].valeur == 1 ? "style='display:none'" : ""}>
+        this._html = `<div id="o_toolbarOutiiil" class="${monProfil.parametre["dockPosition"].valeur == "1" ? "o_toolbarBas" : "o_toolbarDroite"}" ${monProfil.parametre["dockVisible"].valeur == 1 ? "" : "style='display:none'"}>
             <div id="o_toolbarItem1" class="o_toolbarItem" title="Ponte"><span id="o_itemPonte" style="background-image: url(${IMG_SPRITE_MENU})"/></div>
             <div id="o_toolbarItem2" class="o_toolbarItem" title="Chasse"><span id="o_itemChasse" style="background-image: url(${IMG_SPRITE_MENU})"/></div>
             <div id="o_toolbarItem3" class="o_toolbarItem" title="Combat"><span id="o_itemCombat" style="background-image: url(${IMG_SPRITE_MENU})"/></div>
@@ -67,9 +67,9 @@ class Dock
             hide : {effect: "fade", duration: 10}
         });
         // selon la pref on cache l'element
-        if(monProfil.parametre["toolbarVisible"].valeur == "1"){
+        if(monProfil.parametre["dockVisible"].valeur == "0"){
             $(document).mousemove((e) => {
-                if(monProfil.parametre["toolbarPosition"].valeur == "1"){ // boite en bas
+                if(monProfil.parametre["dockPosition"].valeur == "1"){ // boite en bas
                     if($(window).height() - e.pageY < 60)
                         $("#o_toolbarOutiiil").slideDown(500);
                     else

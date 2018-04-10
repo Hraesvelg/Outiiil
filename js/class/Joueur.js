@@ -82,8 +82,8 @@ class Joueur
         this._parametre["couleur3"] = new Parametre("couleur3", "Couleur bordure", "color", "#bd8d46");
         this._parametre["couleurTexte"] = new Parametre("couleurTexte", "Couleur du texte", "color", "#000000");
         this._parametre["couleurTitre"] = new Parametre("couleurTitre", "Couleur des titres", "color", "#787423");
-        this._parametre["toolbarPosition"] = new Parametre("toolbarPosition", "Position des outils", "select", 0, ["Droite", "Bas"]);
-        this._parametre["toolbarVisible"] = new Parametre("toolbarVisible", "Outils toujours visible ?", "checkbox", false);
+        this._parametre["dockPosition"] = new Parametre("dockPosition", "Position des outils", "select", 0, ["Droite", "Bas"]);
+        this._parametre["dockVisible"] = new Parametre("dockVisible", "Outils toujours visible ?", "checkbox", true);
         this._parametre["boiteShow"] = new Parametre("boiteShow", "Effet appariation des boites", "select", 0, EFFET);
         this._parametre["boiteHide"] = new Parametre("boiteHide", "Effet disparition des boites", "select", 0, EFFET);
         // parametres utilitaires
