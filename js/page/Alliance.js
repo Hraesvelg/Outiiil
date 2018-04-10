@@ -149,7 +149,7 @@ class PageAlliance
             $(elt).find("td:eq(9)").after(this._alliance.joueurs[pseudo].x != -1 && this._alliance.joueurs[pseudo].y != -1 ? `<td>${Utils.intToTime(monProfil.getTempsParcours2(this._alliance.joueurs[pseudo]))}</td><td>${Utils.roundMinute(monProfil.getTempsParcours2(this._alliance.joueurs[pseudo])).format("D MMM à HH[h]mm")}</td>` : `<td>N/C</td><td>N/C</td>`);
             // si on est chef de l'alliance on peut modifier les rangs et que le joueur est dans l'utilitaire
             if($("img[src='images/crayon.gif']").length && this._alliance.joueurs.hasOwnProperty(pseudo)){
-                $(elt).find("td:eq(0)").append(`<a id="o_rang${this._alliance.joueurs[pseudo].id}" href=""><img src="${O_UTILITY}" alt="rang"/></a>`);
+                $(elt).find("td:eq(0)").append(`<a id="o_rang${this._alliance.joueurs[pseudo].id}" href=""><img src="${IMG_UTILITY}" alt="rang"/></a>`);
                 $("#o_rang" + this._alliance.joueurs[pseudo].id).click((e) => {
                     let boiteForm = new BoiteRang(this._alliance.joueurs[pseudo], this._utilitaire, this);
                     boiteForm.afficher();

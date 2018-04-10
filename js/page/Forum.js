@@ -246,7 +246,7 @@ class PageForum
     {
         // il faut etre chef pour preparer le fofo
         if($("img[src='images/icone/outil.gif']").length && !$("#o_afficheMenuUtilitaire").length){
-            $("#cat_forum").prepend(`<span id="o_afficheMenuUtilitaire" class="o_forumOption categorie_forum"><img src="${O_OUTIIIL}" alt="outiiil"/></span>
+            $("#cat_forum").prepend(`<span id="o_afficheMenuUtilitaire" class="o_forumOption categorie_forum"><img src="${IMG_OUTIIIL}" alt="outiiil"/></span>
                 <span id="o_menuUtilitaire" class="ligne_paire o_prepareUtilitaire">
                     <a href="#" id="o_creerUtilitaire">» Préparer le forum pour un SDC</a><br/>
                     <a href="#" id="o_preparerGuerre">» Préparer une section pour une guerre</a>
@@ -340,7 +340,7 @@ class PageForum
         let options = "";
         for(let etat in ETAT_COMMANDE) options += `<option value="${ETAT_COMMANDE[etat]}">${etat}</option>`;
         $("#form_cat td:last")
-            .prepend(`<img class="cursor" id="o_afficherEtat" src="${O_CHANGE}" height="16" alt="changer" title="Changer l'etat des commandes selectionnées"/>`)
+            .prepend(`<img class="cursor" id="o_afficherEtat" src="${IMG_CHANGE}" height="16" alt="changer" title="Changer l'etat des commandes selectionnées"/>`)
             .append(`<select id="o_selectEtatCommande" style="display:none;">${options}</select> <button id="o_changerEtat" style="display:none;">Modifier l'état</button>`);
         $("#o_afficherEtat").click((e) => {$("#o_changerEtat, #o_selectEtatCommande").toggle();});
         $("#o_changerEtat").click((e) => {

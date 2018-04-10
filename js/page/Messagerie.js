@@ -226,7 +226,7 @@ class PageMessagerie
     optionMessage(id_conv)
     {
         $("#" + id_conv + " td:eq(0)").append(`<div class="cursor_copy o_group_bouton_mess">
-            <img id="copier_${id_conv}" src="${O_COPY}" height="16" alt="copy" title="copier dans le presse papier"/></span>
+            <img id="copier_${id_conv}" src="${IMG_CROIX}" height="16" alt="copy" title="copier dans le presse papier"/></span>
             <span id="copier_plus_${id_conv}"><img class="afficher_plus" src="images/icone/more_options.gif" title="Afficher les options" width="10" style="position:relative; top:-4px; margin-left:8px;"/>
             <div id="choix_supp_${id_conv}" class="choix_supplementaires_option" style="z-index: 3;display: none;">
                 <div id="copier_hof_${id_conv}" class="choix_option option_deplacement" style="border-bottom:1px solid #B99D53;">

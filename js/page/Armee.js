@@ -268,15 +268,15 @@ class PageArmee
 		let bouclier = monProfil.niveauRecherche[1];
 		let line = `<tr align='center' class='vie cursor'>
 			 <td>Vie (AB)</td>
-			 <td colspan=3>${IMG_COEUR} ${numeral(this._armeeTdc.getTotalVie(bouclier)).format()}</td>
-			 <td colspan=3>${IMG_COEUR} ${numeral(this._armeeDome.getTotalVie(bouclier, LIEU.DOME, ~~($('span:contains("Dôme")').text().replace(/\D/g, '')))).format()}</td>
-			 <td colspan=3>${IMG_COEUR} ${numeral(this._armeeLoge.getTotalVie(bouclier, LIEU.LOGE, ~~($('span:contains("Loge")').text().replace(/\D/g, '')))).format()}</td>
+			 <td colspan=3>${IMG_VIE} ${numeral(this._armeeTdc.getTotalVie(bouclier)).format()}</td>
+			 <td colspan=3>${IMG_VIE} ${numeral(this._armeeDome.getTotalVie(bouclier, LIEU.DOME, ~~($('span:contains("Dôme")').text().replace(/\D/g, '')))).format()}</td>
+			 <td colspan=3>${IMG_VIE} ${numeral(this._armeeLoge.getTotalVie(bouclier, LIEU.LOGE, ~~($('span:contains("Loge")').text().replace(/\D/g, '')))).format()}</td>
 			 </tr>
 			 <tr align='center' class='vie cursor' style='display:none;'>
 			 <td>Vie (HB)</td>
-			 <td colspan=3>${IMG_COEUR} ${numeral(this._armeeTdc.getBaseVie()).format()}</td>
-			 <td colspan=3>${IMG_COEUR} ${numeral(this._armeeDome.getBaseVie()).format()}</td>
-			 <td colspan=3>${IMG_COEUR} ${numeral(this._armeeLoge.getBaseVie()).format()}</td>
+			 <td colspan=3>${IMG_VIE} ${numeral(this._armeeTdc.getBaseVie()).format()}</td>
+			 <td colspan=3>${IMG_VIE} ${numeral(this._armeeDome.getBaseVie()).format()}</td>
+			 <td colspan=3>${IMG_VIE} ${numeral(this._armeeLoge.getBaseVie()).format()}</td>
 			 </tr>`;
 		$(".simulateur tr[align=center]:last").after(line);
 		$(".vie").click(() => {$(".vie").toggle();});
@@ -356,7 +356,7 @@ class PageArmee
             <table class="centre o_maxWidth" cellspacing=0>
                 <tr class="ligne_paire gras"><td></td><td colspan="2">Non XP</td><td colspan="2">Total</td></tr>
                 <tr class="gras"><td></td><td>HB</td><td>AB</td><td>HB</td><td>AB</td></tr>
-                <tr class="ligne_paire"><td class="left">${IMG_COEUR} Vie</td><td>${numeral(this._armeeTdc.getNonXpBaseVie() + this._armeeDome.getNonXpBaseVie() + this._armeeLoge.getNonXpBaseVie()).format()}</td><td>${numeral(this._armeeTdc.getNonXpTotalVie(bouclier) + this._armeeDome.getNonXpTotalVie(bouclier) + this._armeeLoge.getNonXpTotalVie(bouclier)).format()}</td><td>${numeral(this._armeeTdc.getBaseVie() + this._armeeDome.getBaseVie() + this._armeeLoge.getBaseVie()).format()}</td><td>${numeral(this._armeeTdc.getTotalVie(bouclier) + this._armeeDome.getTotalVie(bouclier) + this._armeeLoge.getTotalVie(bouclier)).format()}</td></tr>
+                <tr class="ligne_paire"><td class="left">${IMG_VIE} Vie</td><td>${numeral(this._armeeTdc.getNonXpBaseVie() + this._armeeDome.getNonXpBaseVie() + this._armeeLoge.getNonXpBaseVie()).format()}</td><td>${numeral(this._armeeTdc.getNonXpTotalVie(bouclier) + this._armeeDome.getNonXpTotalVie(bouclier) + this._armeeLoge.getNonXpTotalVie(bouclier)).format()}</td><td>${numeral(this._armeeTdc.getBaseVie() + this._armeeDome.getBaseVie() + this._armeeLoge.getBaseVie()).format()}</td><td>${numeral(this._armeeTdc.getTotalVie(bouclier) + this._armeeDome.getTotalVie(bouclier) + this._armeeLoge.getTotalVie(bouclier)).format()}</td></tr>
                 <tr><td class="left">${IMG_ATT} Attaque</td><td>${numeral(this._armeeTdc.getNonXpBaseAtt() + this._armeeDome.getNonXpBaseAtt() + this._armeeLoge.getNonXpBaseAtt()).format()}</td><td>${numeral(this._armeeTdc.getNonXpTotalAtt(armes) + this._armeeDome.getNonXpTotalAtt(armes) + this._armeeLoge.getNonXpTotalAtt(armes)).format()}</td><td>${numeral(this._armeeTdc.getBaseAtt() + this._armeeDome.getBaseAtt() + this._armeeLoge.getBaseAtt()).format()}</td><td>${numeral(this._armeeTdc.getTotalAtt(armes) + this._armeeDome.getTotalAtt(armes) + this._armeeLoge.getTotalAtt(armes)).format()}</td></tr>
                 <tr class="ligne_paire"><td class="left">${IMG_DEF} Défense</td><td>${numeral(this._armeeTdc.getNonXpBaseDef() + this._armeeDome.getNonXpBaseDef() + this._armeeLoge.getNonXpBaseDef()).format()}</td><td>${numeral(this._armeeTdc.getNonXpTotalDef(armes) + this._armeeDome.getNonXpTotalDef(armes) + this._armeeLoge.getNonXpTotalDef(armes)).format()}</td><td>${numeral(this._armeeTdc.getBaseDef() + this._armeeDome.getBaseDef() + this._armeeLoge.getBaseDef()).format()}</td><td>${numeral(this._armeeTdc.getTotalDef(armes) + this._armeeDome.getTotalDef(armes) + this._armeeLoge.getTotalDef(armes)).format()}</td></tr>
             </table>
