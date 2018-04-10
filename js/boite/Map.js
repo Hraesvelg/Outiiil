@@ -112,7 +112,7 @@ class BoiteMap extends Boite
             tooltip : {
                 crosshairs : true,
                 formatter : function(){
-                    return `<b>${this.point.name}</b><br/>x : ${this.x}, y : ${this.y}<br/>Temps de trajet : ${Utils.intToTime(monProfil.getTempsParcours(this.x, this.y))}`;
+                    return `<b>${this.point.name}</b><br/>x : ${this.x}, y : ${this.y}<br/>Temps de trajet : ${Utils.intToTime(monProfil.getTempsParcours(this.y, this.x))}`;
                 }
             },
             plotOptions : {
