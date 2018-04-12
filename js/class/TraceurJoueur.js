@@ -73,7 +73,7 @@ class TraceurJoueur extends Traceur
                         if(donnees.error == "0"){
                             $.toast({...TOAST_INFO, text : "Traceur joueur mis à jour"});
                             // mise à jour du timer
-                            localStorage.setItem("o_traceur_" + this._type, moment().add(this._intervalle, 'm').format("DD-MM-YYYY HH:mm:ss"));
+                            localStorage.setItem("outiiil_traceur_" + this._type, moment().add(this._intervalle, 'm').format("DD-MM-YYYY HH:mm:ss"));
                             // lancement de la boucle
                             setTimeout(() => {this.tracer();}, this._intervalle * 60000);
                         }else
