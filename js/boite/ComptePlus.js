@@ -348,7 +348,7 @@ class BoiteComptePlus
 	*/
 	afficher()
 	{
-        let visible = localStorage.getItem("o_boiteActive");
+        let visible = localStorage.getItem("outiiil_boiteActive");
         if(!Utils.comptePlus){
             // Ajout du contenue
             $("#boiteComptePlus").replaceWith("<div id='boiteComptePlus' class='boite_compte_plus'><div class='titre_colonne_cliquable'><span class='titre_compte_plus'>Outiiil " + VERSION.substring(0, 2) + "<span class='reduce'>" + VERSION.substring(2) + "</span></span></div><div class='contenu_boite_compte_plus'><table " + (visible == null || visible == "C" ? "" : "style='display:none'") + ">"
