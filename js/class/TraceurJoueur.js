@@ -69,11 +69,15 @@ class TraceurJoueur extends Traceur
                     }
                     // on poste les données sur l'utilitaire
                     this.envoyerData().then((data) => {
-                        $.toast({...TOAST_INFO, text : "Traceur joueur mis à jour"});
-                        // mise à jour du timer
-                        sessionStorage.setItem("outiiil_traceur_" + this._type, moment().add(this._intervalle, 'm').format("DD-MM-YYYY HH:mm:ss"));
-                        // lancement de la boucle
-                        setTimeout(() => {this.tracer();}, this._intervalle * 60000);
+                        let donnees = JSON.parse(data);
+                        if(donnees.error == "0"){
+                            $.toast({...TOAST_INFO, text : "Traceur joueur mis à jour"});
+                            // mise à jour du timer
+                            sessionStorage.setItem("outiiil_traceur_" + this._type, moment().add(this._intervalle, 'm').format("DD-MM-YYYY HH:mm:ss"));
+                            // lancement de la boucle
+                            setTimeout(() => {this.tracer();}, this._intervalle * 60000);
+                        }else
+                            $.toast({...TOAST_ERROR, text : donnees.message});
                     }, (jqXHR, textStatus, errorThrown) => {
                         $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la sauvegarde des données du traceur."});
                     });
@@ -117,7 +121,7 @@ class TraceurJoueur extends Traceur
         });
         this.getInformation().then((data) => {
             let info = null, rows = new Array(), donnees = JSON.parse(data);
-            if(donnees.error == "0"){
+            if(donnees.error == "0"){ // si pas d'erreur coté serveur
                 for(let line of donnees.message.split("\n")){
                     if(line){
                         info = line.split(", ");
