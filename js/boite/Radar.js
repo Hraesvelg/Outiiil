@@ -171,9 +171,9 @@ class BoiteRadar
             // Event sur le titre si on utilise le radar
             $("#boiteComptePlus .titre_colonne_cliquable").click((e) => {
                 if($(e.currentTarget).next().find("table:visible").attr("id"))
-                    sessionStorage.setItem("boiteActive", "C");
+                    localStorage.setItem("o_boiteActive", "C");
                 else
-                    sessionStorage.setItem("boiteActive", "R");
+                    localStorage.setItem("o_boiteActive", "R");
                 $("#boiteComptePlus .contenu_boite_compte_plus table").toggle();
             });
             // Remplissage de la boite
@@ -189,7 +189,7 @@ class BoiteRadar
 	*/
 	actualiser()
 	{
-        let affiche = sessionStorage.getItem("boiteActive"), html = `<table id='o_radar' ${!affiche || affiche == "C" ? `style="display:none"` : ""}><tbody></tbody></table>`;
+        let affiche = localStorage.getItem("o_boiteActive"), html = `<table id='o_radar' ${!affiche || affiche == "C" ? `style="display:none"` : ""}><tbody></tbody></table>`;
         // on remplace le contenu ou l'ajoute
         if($("#o_radar").length)
             $("#o_radar").replaceWith(html);

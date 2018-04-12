@@ -115,7 +115,7 @@ class Traceur
     getTempsAvantMAJ()
     {
         // on recupere le datetime dans le storage
-        let dateHeureStorage = sessionStorage.getItem("outiiil_traceur_" + this._type);
+        let dateHeureStorage = localStorage.getItem("o_traceur_" + this._type);
         if(dateHeureStorage)
             return moment().isAfter(moment(dateHeureStorage, "DD-MM-YYYY HH:mm:ss")) ? 0 : parseInt(moment(dateHeureStorage, "DD-MM-YYYY HH:mm:ss").diff(moment()) / 1000);
         // si on a pas de dateheure en session on fait une mise à jour

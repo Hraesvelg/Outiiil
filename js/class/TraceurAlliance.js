@@ -63,7 +63,7 @@ class TraceurAlliance extends Traceur
                         if(donnees.error == "0"){
                              $.toast({...TOAST_INFO, text : "Traceur alliance mis à jour"});
                             // mise à jour du timer
-                            sessionStorage.setItem("outiiil_traceur_" + this._type, moment().add(this._intervalle, 'm').format("DD-MM-YYYY HH:mm:ss"));
+                            localStorage.setItem("o_traceur_" + this._type, moment().add(this._intervalle, 'm').format("DD-MM-YYYY HH:mm:ss"));
                             // lancement de la boucle
                             setTimeout(() => {this.tracer();}, this._intervalle * 60000);
                         }else
