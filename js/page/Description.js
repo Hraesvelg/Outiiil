@@ -59,7 +59,7 @@ class PageDescription
             .wrap("<div class='simulateur'>")
             .css({"border" : "0px", "width" : "100%", "padding" : "0px"})
             .prepend(`<thead><tr class='alt'><th></th><th>Rang</th><th>Pseudo</th><th></th><th>Terrain</th><th></th><th><span style='padding-right:10px'>Technologie</span></th><th><span style='padding-right:10px'>Fourmiliere</span></th></tr></thead>`)
-            .after(`<div id='o_bouton_alliance' class='o_group_bouton'><span id='o_historique' class='option_gestion'><img src="${O_HISTORIQUE}" alt="historique"/> Historique</span><span id='o_surveiller' class='option_gestion'><img src="${O_RADAR}" alt="surveiller"/>${this._boiteRadar.alliances.hasOwnProperty(this._alliance.tag) ? " Ignorer" : " Surveiller"}</span></div><div id='o_separation_graph' class='clear'></div>`);
+            .after(`<div id='o_bouton_alliance' class='o_group_bouton'><span id='o_historique' class='option_gestion'><img src="${IMG_HISTORIQUE}" alt="historique"/> Historique</span><span id='o_surveiller' class='option_gestion'><img src="${IMG_RADAR}" alt="surveiller"/>${this._boiteRadar.alliances.hasOwnProperty(this._alliance.tag) ? " Ignorer" : " Surveiller"}</span></div><div id='o_separation_graph' class='clear'></div>`);
         this.tableau();
 
         $("#o_historique").click((e) => {

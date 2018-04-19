@@ -348,7 +348,7 @@ class BoiteComptePlus
 	*/
 	afficher()
 	{
-        let visible = sessionStorage.getItem("boiteActive");
+        let visible = localStorage.getItem("outiiil_boiteActive");
         if(!Utils.comptePlus){
             // Ajout du contenue
             $("#boiteComptePlus").replaceWith("<div id='boiteComptePlus' class='boite_compte_plus'><div class='titre_colonne_cliquable'><span class='titre_compte_plus'>Outiiil " + VERSION.substring(0, 2) + "<span class='reduce'>" + VERSION.substring(2) + "</span></span></div><div class='contenu_boite_compte_plus'><table " + (visible == null || visible == "C" ? "" : "style='display:none'") + ">"
@@ -504,7 +504,7 @@ class BoiteComptePlus
             // Ajout du title
             let table = "<table id='o_titleConvoi'>";
             for(let i = 0, l = this._convoi.length ; i < l ; i++)
-                table += `<tr><td>${this._convoi[i].sens ? "<img src='" + O_DOWN + "' alt='reception'/>" : "<img src='" + O_UP + "' alt='livraison'/>"}</td><td class='gras'>${this._convoi[i].cible}</td><td>&nbsp;</td><td class="right">${numeral(this._convoi[i].nou).format("0[.]00a")} <img alt="nourritures" src="images/icone/icone_pomme.png" height="17"></td><td class="right">${numeral(this._convoi[i].mat).format("0[.]00a")} <img alt="materiaux" src="images/icone/icone_bois.png" height="17"/></td><td>Retour le ${moment(this._convoi[i].exp).add(1, "minute").startOf("minute").format("D MMM YYYY à HH[h]mm")}</td></tr>`;
+                table += `<tr><td>${this._convoi[i].sens ? "<img src='" + IMG_DOWN + "' alt='reception'/>" : "<img src='" + IMG_UP + "' alt='livraison'/>"}</td><td class='gras'>${this._convoi[i].cible}</td><td>&nbsp;</td><td class="right">${numeral(this._convoi[i].nou).format("0[.]00a")} <img alt="nourritures" src="images/icone/icone_pomme.png" height="17"></td><td class="right">${numeral(this._convoi[i].mat).format("0[.]00a")} <img alt="materiaux" src="images/icone/icone_bois.png" height="17"/></td><td>Retour le ${moment(this._convoi[i].exp).add(1, "minute").startOf("minute").format("D MMM YYYY à HH[h]mm")}</td></tr>`;
             table += "</table>";
             $("#boiteComptePlus table tr:eq(5)").attr("title", table);
             let tempsR = moment(this._convoi[0].exp).diff(moment()) / 1000;

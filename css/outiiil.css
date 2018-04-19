@@ -405,6 +405,7 @@ input:required, select:required {box-shadow:none;}
 .o_content table
 {
     border-collapse:collapse;
+    font-size: 0.85em;
 }
 
 /* Bouton de fermeture des boites */
@@ -478,6 +479,9 @@ input:required, select:required {box-shadow:none;}
 
 /* Page reine */
 input[id^="input_cout_nombre"], input[id^="input_cout_temps"], input[id^="input_cout_nourriture"] {border-width : 2px;}
+
+/* Page contruction Labo */
+.ligneAmelioration {border: none!important}
 
 /* Page arméee */
 #o_replaceArmee {margin-bottom : 5px;}

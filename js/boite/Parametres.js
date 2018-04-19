@@ -21,7 +21,7 @@ class BoiteParametre extends Boite
         /**
         *
         */
-        this._paramStyle = ["couleurTitre", "couleur1", "couleur2", "couleur3", "couleurTexte", "toolbarPosition", "toolbarVisible", "boiteShow", "boiteHide"];
+        this._paramStyle = ["couleurTitre", "couleur1", "couleur2", "couleur3", "couleurTexte", "dockPosition", "dockVisible", "boiteShow", "boiteHide"];
         /**
         *
         */

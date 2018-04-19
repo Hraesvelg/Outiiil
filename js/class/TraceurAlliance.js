@@ -50,6 +50,8 @@ class TraceurAlliance extends Traceur
         if(this._etat){
             let tempsMAJ = this.getTempsAvantMAJ();
             if(!tempsMAJ){
+                // mise à jour du timer directement pour eviter les doubles envois (multionglet, multifenetre)
+                localStorage.setItem("outiiil_traceur_" + this._type, moment().add(this._intervalle, 'm').format("DD-MM-YYYY HH:mm:ss"));
                 // recupérer des données
                 this.getClassement(1).then((data) => {
                     this._data = {};
@@ -59,11 +61,13 @@ class TraceurAlliance extends Traceur
                     });
                     // on poste les données sur l'utilitaire
                     this.envoyerData().then((data) => {
-                        $.toast({...TOAST_INFO, text : "Traceur alliance mis à jour"});
-                        // mise à jour du timer
-                        sessionStorage.setItem("outiiil_traceur_" + this._type, moment().add(this._intervalle, 'm').format("DD-MM-YYYY HH:mm:ss"));
-                        // lancement de la boucle
-                        setTimeout(() => {this.tracer();}, this._intervalle * 60000);
+                        let donnees = JSON.parse(data);
+                        if(donnees.error == "0"){
+                             $.toast({...TOAST_INFO, text : "Traceur alliance mis à jour"});
+                            // lancement de la boucle
+                            setTimeout(() => {this.tracer();}, this._intervalle * 60000);
+                        }else
+                            $.toast({...TOAST_ERROR, text : donnees.message});
                     }, (jqXHR, textStatus, errorThrown) => {
                         $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la sauvegarde des données du traceur."});
                     });
@@ -88,7 +92,7 @@ class TraceurAlliance extends Traceur
             dom : "Bfrtip",
             buttons : ["copyHtml5", "csvHtml5", "excelHtml5"],
             order : [[0, "desc"]],
-            pageLength: 20,
+            pageLength: 25,
             responsive : true,
             language : {
                 zeroRecords : "Aucune information trouvée",

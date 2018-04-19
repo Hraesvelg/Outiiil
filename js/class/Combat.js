@@ -453,7 +453,7 @@ class Combat
 		if(this._armeeEnnemieAp.getSommeUnite()){
 			html += `<span style='text-decoration:underline;' class='gras'>Armee (après combat, sans XP)</span><br/><table class='o_tabAnalyse' cellspacing='0'>
 				<tr><td><img width='35' src='images/icone/icone_ouvriere.png' alt='nb_unite' class='o_vAlign'/></td><td class='right'>${numeral(this._armeeEnnemieAp.getSommeUnite()).format()}</td>
-				<td class='right' style='width:30px;'>${IMG_COEUR}</td><td class='right'>${numeral(this._armeeEnnemieAp.getBaseVie()).format()} (HB)</td>`;
+				<td class='right' style='width:30px;'>${IMG_VIE}</td><td class='right'>${numeral(this._armeeEnnemieAp.getBaseVie()).format()} (HB)</td>`;
             if(this._defenseur.niveauRecherche[1] != -1)
 				html += `<td class='right'>${numeral(this._armeeEnnemieAp.getTotalVie(this._defenseur.niveauRecherche[1])).format()} (AB)<img src='images/attention.gif' alt='attention' title='Vie sans le bonus lieu !' class='o_vAlign'/></td></tr>`;
 			else if(this._defenseurBonusLieu.length)
@@ -474,7 +474,7 @@ class Combat
                 vieHB = this._armeeAp.getBaseVie() - this._armeeAv.getBaseVie();
 			html += `<span style='text-decoration:underline;' class='gras'>Bilan après combat</span><br/><table class='o_tabAnalyse right' cellspacing='0'>
 				<tr><td><img width='35' src='images/icone/icone_ouvriere.png' alt='nb_unite' class='o_vAlign'/></td><td colspan='2' style='padding-left:10px'>${numeral(nbUnite).format()}</td><td style='padding-left:10px'>${(nbUnite * 100 / this._armeeAv.getSommeUnite()).toFixed(2)}%</td></tr>
-				<tr><td>${IMG_COEUR}</td><td class='right'>${(vieHB > 0 ? '+' : '') + numeral(vieHB).format()}(HB)</td><td class='right'>${(vieHB > 0 ? '+' : '') + numeral(this._armeeAp.getTotalVie(monProfil.niveauRecherche[1]) - this._armeeAv.getTotalVie(monProfil.niveauRecherche[1])).format()}(AB)</td><td style='padding-left:10px'>${(vieHB > 0 ? '+' : '') + (vieHB * 100 / this._armeeAv.getBaseVie()).toFixed(2)}%</td></tr>
+				<tr><td>${IMG_VIE}</td><td class='right'>${(vieHB > 0 ? '+' : '') + numeral(vieHB).format()}(HB)</td><td class='right'>${(vieHB > 0 ? '+' : '') + numeral(this._armeeAp.getTotalVie(monProfil.niveauRecherche[1]) - this._armeeAv.getTotalVie(monProfil.niveauRecherche[1])).format()}(AB)</td><td style='padding-left:10px'>${(vieHB > 0 ? '+' : '') + (vieHB * 100 / this._armeeAv.getBaseVie()).toFixed(2)}%</td></tr>
 				<tr><td>${IMG_ATT}</td><td style='padding-left:10px' class='right'>${(attHB > 0 ? '+' : '') + numeral(attHB).format()}(HB)</td><td style='padding-left:10px' class='right'>${(attHB > 0 ? '+' : '') + numeral(this._armeeAp.getTotalAtt(monProfil.niveauRecherche[2]) - this._armeeAv.getTotalAtt(monProfil.niveauRecherche[2])).format()}(AB)</td><td style='padding-left:10px'>${(attHB > 0 ? '+' : '') + (attHB * 100 / this._armeeAv.getBaseAtt()).toFixed(2)}%</td></tr>
 				<tr><td>${IMG_DEF}</td><td class='right'>${(defHB > 0 ? '+' : '') + numeral(defHB).format()}(HB)</td><td class='right'>${(defHB > 0 ? '+' : '') + numeral(this._armeeAp.getTotalDef(monProfil.niveauRecherche[2]) - this._armeeAv.getTotalDef(monProfil.niveauRecherche[2])).format()}(AB)</td></td><td style='padding-left:10px'>${(defHB > 0 ? '+' : '') + (defHB * 100 / this._armeeAv.getBaseDef()).toFixed(2)}%</td></tr>
 				</table><br/>`;
@@ -507,7 +507,7 @@ class Combat
 		}
 		html += `<tr><td></td><td colspan='2' class='gras'>Bilan Perte</td></tr>
 			<tr><td><img width='35' class='o_vAlign' src='images/icone/icone_ouvriere.png' alt='nb_unite'/></td><td>${numeral(this._armeePe.getSommeUnite()).format()} (${numeral(this._armeePe.getSommeUnite() - this._armeeAv.getSommeUnite()).format()})</td><td>${numeral(this._armeeEnnemieAp.getSommeUnite()).format()} (${numeral(this._armeeEnnemieAp.getSommeUnite() - this._armeeEnnemieAv.getSommeUnite()).format()})</td></tr>
-			<tr><td>${IMG_COEUR}</td><td>${numeral(this._armeePe.getBaseVie()).format()} (${numeral(this._armeePe.getBaseVie() - this._armeeAv.getBaseVie()).format()})</td><td>${numeral(this._armeeEnnemieAp.getBaseVie()).format()} (${numeral(this._armeeEnnemieAp.getBaseVie() - this._armeeEnnemieAv.getBaseVie()).format()})</td></tr>
+			<tr><td>${IMG_VIE}</td><td>${numeral(this._armeePe.getBaseVie()).format()} (${numeral(this._armeePe.getBaseVie() - this._armeeAv.getBaseVie()).format()})</td><td>${numeral(this._armeeEnnemieAp.getBaseVie()).format()} (${numeral(this._armeeEnnemieAp.getBaseVie() - this._armeeEnnemieAv.getBaseVie()).format()})</td></tr>
 			<tr><td>${IMG_ATT}</td><td>${numeral(this._armeePe.getBaseAtt()).format()} (${numeral(this._armeePe.getBaseAtt() - this._armeeAv.getBaseAtt()).format()})</td><td>${numeral(this._armeeEnnemieAp.getBaseAtt()).format()} (${numeral(this._armeeEnnemieAp.getBaseAtt() - this._armeeEnnemieAv.getBaseAtt()).format()})</td></tr>
 			<tr><td>${IMG_DEF}</td><td>${numeral(this._armeePe.getBaseDef()).format()} (${numeral(this._armeePe.getBaseDef() - this._armeeAv.getBaseDef()).format()})</td><td>${numeral(this._armeeEnnemieAp.getBaseDef()).format()} (${numeral(this._armeeEnnemieAp.getBaseDef() - this._armeeEnnemieAv.getBaseDef()).format()})</td></tr>
 			<tr><td><img width='18' class='o_vAlign' src='images/icone/horloge.png'/></td><td>${Utils.intToTime(this._armeeAv.getTemps(0) - this._armeePe.getTemps(0))}</td><td>${Utils.intToTime(this._armeeEnnemieAv.getTemps(0) - this._armeeEnnemieAp.getTemps(0))}</td></tr>
@@ -515,7 +515,7 @@ class Combat
 		if(this._armeePe.getBaseAtt() != this._armeeAp.getBaseAtt()){
 			let diff1 = this._armeeAp.getBaseVie() - this._armeeAv.getBaseVie(), diff2 = this._armeeAp.getBaseAtt() - this._armeeAv.getBaseAtt(), diff3 = this._armeeAp.getBaseDef() - this._armeeAv.getBaseDef();
 			html += `<tr><td colspan='3' class='gras'>Bilan XP</td></tr>
-				<tr><td colspan='3'>${IMG_COEUR} ${(diff1 > 0 ? "+" : "") + numeral(diff1).format()}</td></tr>
+				<tr><td colspan='3'>${IMG_VIE} ${(diff1 > 0 ? "+" : "") + numeral(diff1).format()}</td></tr>
 				<tr><td colspan='3'>${IMG_ATT} ${(diff2 > 0 ? "+" : "") + numeral(diff2).format()}</td></tr>
 				<tr><td colspan='3'>${IMG_DEF} ${(diff3 > 0 ? "+" : "") + numeral(diff3).format()}</td></tr>`;
 		}

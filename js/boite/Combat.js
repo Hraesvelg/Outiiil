@@ -121,7 +121,7 @@ class BoiteCombat extends Boite
                 <tr><td><input value='0' size='12' name='o_unite1_12'/></td><td colspan="3">${NOM_UNITE[12]}</td><td><input value='0' size='12' name='o_unite2_12'/></td></tr>
                 <tr><td><input value='0' size='12' name='o_unite1_13'/></td><td colspan="3">${NOM_UNITE[13]}</td><td><input value='0' size='12' name='o_unite2_13'/></td></tr>
                 <tr><td><input value='0' size='12' name='o_unite1_14'/></td><td colspan="3">${NOM_UNITE[14]}</td><td><input value='0' size='12' name='o_unite2_14'/></td></tr>
-                <tr><td id="o_vieAtt" class="right">0</td><td>${IMG_COEUR}</td><td>Vie</td><td>${IMG_COEUR}</td><td id="o_vieDef" class="right">0</td></tr>
+                <tr><td id="o_vieAtt" class="right">0</td><td>${IMG_VIE}</td><td>Vie</td><td>${IMG_VIE}</td><td id="o_vieDef" class="right">0</td></tr>
                 <tr><td id="o_degatAtt" class="right">0</td><td>${IMG_ATT}</td><td>Dégât</td><td>${IMG_DEF}</td><td id="o_degatDef" class="right">0</td></tr>
                 </table>
             </td><td valign="top">
@@ -438,7 +438,7 @@ class BoiteCombat extends Boite
         let html = `<table id="o_calculatriceCombat" class="centre">
             <thead><tr><th id="o_placementJ" class="cursor" colspan="2">${IMG_FLECHE} Joueur 1 ${IMG_FLECHE}</th><th></th><th>Joueur ou Alliance</th></tr></thead>
             <tr><td></td><td><input type="text" id="o_pseudoTemps" placeholder="Pseudo"/></td><td>-></td><td><input type="text" id="o_cibleJoueurTemps" placeholder="Pseudo1, Pseudo2..."/> <input type="text" id="o_cibleTagTemps" placeholder="tag1, tag2..."/></td></tr>
-            <tr><td>Vitesse d"attaque</td><td><input type="number" id="o_vaTemps" value="0" min="0" max="50"/></td><td></td><td></td></tr>
+            <tr><td>Vitesse d'attaque</td><td><input type="number" id="o_vaTemps" value="0" min="0" max="50"/></td><td></td><td></td></tr>
             <tr><td>Dernier mouvement</td><td><input id="o_dernierMvt" placeholder="JJ-MM-AAAA HH:mm"/></td><td></td><td><button id="o_calculerTemps">Calculer</button></td></tr>
             <tr class="reduce"><td colspan="4"><em>Le temps maximal d'un trajet est de <span id="o_indicationTemps">${this.calculerLimiteTemps(0)}</span>.</em></td></tr>
             </table>`;

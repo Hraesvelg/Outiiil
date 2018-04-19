@@ -289,13 +289,13 @@ class Commande
                     break;
             }
         }else
-            html += `<td><img src="${O_CROIX}" alt='supprimer' title='Ne pas livrer avant le ${moment(this._dateApres).format("DD-MM-YYYY")}'/></td>`;
+            html += `<td><img src="${IMG_CROIX}" alt='supprimer' title='Ne pas livrer avant le ${moment(this._dateApres).format("DD-MM-YYYY")}'/></td>`;
         // Etat
         html += `<td ${this._etat == ETAT_COMMANDE.Nouvelle ? "title='Un chef doit valider cette commande.'" : ""}>${Object.keys(ETAT_COMMANDE).find(key => ETAT_COMMANDE[key] === this._etat)}</td>`;
         // Temps de trajet
         html += `<td>${Utils.intToTime(monProfil.getTempsParcours2(this._demandeur))}</td>
-            ${apres && this._etat == ETAT_COMMANDE["En cours"] ? "<td><a id='o_commande" + this._id + "' href=''><img src='" + O_LIVRAISON + "' alt='livrer'/></a></td>" : "<td></td>"}
-            ${(this._demandeur.pseudo == monProfil.pseudo) ? "<td><a id='o_modifierCommande" + this._id + "' href=''><img src='" + O_CRAYON + "' alt='modifier'/></a> <a id='o_supprimerCommande" + this._id + "' href=''><img src='" + O_CROIX + "' alt='supprimer'/></a></td></tr>" : "<td></td></tr>"}`;
+            ${apres && this._etat == ETAT_COMMANDE["En cours"] ? "<td><a id='o_commande" + this._id + "' href=''><img src='" + IMG_LIVRAISON + "' alt='livrer'/></a></td>" : "<td></td>"}
+            ${(this._demandeur.pseudo == monProfil.pseudo) ? "<td><a id='o_modifierCommande" + this._id + "' href=''><img src='" + IMG_CRAYON + "' alt='modifier'/></a> <a id='o_supprimerCommande" + this._id + "' href=''><img src='" + IMG_CROIX + "' alt='supprimer'/></a></td></tr>" : "<td></td></tr>"}`;
         return html;
     }
     /**
