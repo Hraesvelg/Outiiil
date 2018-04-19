@@ -14,7 +14,7 @@ class BoiteTraceur extends Boite
 {
     constructor()
     {
-        super("o_boiteTraceur", "Information du traceur " + Utils.serveur, `<div id='o_tabsTraceur' class='o_tabs'><ul><li><a href='#o_tabsTraceur1'>Joueur</a></li><li><a href='#o_tabsTraceur2'>Alliance</a></li></ul><div id='o_tabsTraceur1'/><div id='o_tabsTraceur2'/>`);
+        super("o_boiteTraceur", "Données du traceur " + Utils.serveur, `<div id='o_tabsTraceur' class='o_tabs'><ul><li><a href='#o_tabsTraceur1'>Joueur</a></li><li><a href='#o_tabsTraceur2'>Alliance</a></li></ul><div id='o_tabsTraceur1'/><div id='o_tabsTraceur2'/>`);
         /**
         *
         */

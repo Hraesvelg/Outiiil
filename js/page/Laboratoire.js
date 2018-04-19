@@ -31,10 +31,8 @@ class PageLaboratoire
         // ajout title evolution
         this._armee.getArmee().then((data) => {
             this._armee.chargeData(data);
-            // Affichage de la rentabilité du bouclier
-            this.titleBouclier();
-            // Affichage de la rentabilité de l'armes
-            this.titleArmes();
+            // Affichage de la rentabilité du bouclier et de la rentabilité de l'armes
+            this.titleBouclier().titleArmes();
         });
         // Sauvegarde recherche
         if(!Utils.comptePlus) this.plus();
@@ -62,6 +60,7 @@ class PageLaboratoire
             content : title,
             tooltipClass : "ui-tooltip-brown ui-tooltip-lightBrown"
         });
+        return this;
     }
     /**
     * Ajoute un title detaillé pour connaitre la rentabilité du niveau d'armes.
@@ -98,6 +97,7 @@ class PageLaboratoire
             content : title,
             tooltipClass : "ui-tooltip-brown ui-tooltip-lightBrown"
         });
+        return this;
     }
 	/**
 	* Sauvegarde la recherche en cours.
@@ -120,6 +120,7 @@ class PageLaboratoire
 				this._boiteComptePlus.startRecherche = 0;
                 this._boiteComptePlus.sauvegarder();
 			});
+        return this;
 	}
 	/**
 	* Sauvegarde la recherche en cours.
