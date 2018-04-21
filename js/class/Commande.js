@@ -23,11 +23,11 @@ class Commande
         /**
         * date à laquelle on souhaite être livré
         */
-        this._dateSouhaite = parametres["dateSouhaite"] || "";
+        this._dateSouhaite = parametres["dateSouhaite"] || null;
         /**
         * date à partir de quand livrer
         */
-        this._dateApres = parametres["dateApres"] || "";
+        this._dateApres = parametres["dateApres"] || null;
         /**
         * personne qui fait la commande
         */
@@ -271,7 +271,7 @@ class Commande
     */
     toHTML()
     {
-        let apres = !this._dateApres || moment().diff(moment(this._dateApres), "days") >= 0;
+        let apres = !this._dateApres || moment().isSameOrAfter(moment(this._dateApres));
         let html = `<tr data="${this._id}">
             <td>${this._demandeur.getLienFourmizzz()}</a></td><td>${numeral(this._nourriture).format()}</td><td class='right'>${numeral(this._materiaux).format()}</td>
             <td>${moment(this._dateSouhaite).format("D MMM YYYY")}</td>`;
