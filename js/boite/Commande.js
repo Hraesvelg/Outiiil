@@ -68,13 +68,17 @@ class BoiteCommande extends Boite
                 $("#o_form" + this._commande.id + " input[name='o_quantiteNou']").val(numeral(qte[0]).format());
                 $("#o_form" + this._commande.id + " input[name='o_quantiteMat']").val(numeral(qte[1]).format());
             });
+        $("#o_form" + this._commande.id + " input[name^='o_quantite']").on("input", (e) => {
+            return $(e.currentTarget).val(numeral($(e.currentTarget).val()).format());
+        });
         $("#o_commander" + this._commande.id).click((e) => {
             e.preventDefault();
             this._commande.evolution = $("#o_form" + this._commande.id + " select[name='o_evolution']").val();
             this._commande.nourriture = numeral($("#o_form" + this._commande.id + " input[name='o_quantiteNou']").val()).value();
             this._commande.materiaux = numeral($("#o_form" + this._commande.id + " input[name='o_quantiteMat']").val()).value();
             this._commande.dateSouhaite = moment($("#o_form" + this._commande.id + " input[name='o_dateCommande']").val(), "DD-MM-YYYY");
-            this._commande.dateApres = $("#o_form" + this._commande.id + " input[name='o_dateApres']").val();
+            let dateApres = $("#o_form" + this._commande.id + " input[name='o_dateApres']").val();
+            this._commande.dateApres = dateApres ? moment($("#o_form" + this._commande.id + " input[name='o_dateApres']").val(), "DD-MM-YYYY") : null;
             let message = this._commande.estValide();
             if(!message){
                 let action = this._utilitaire.commande.hasOwnProperty(this._commande.id) ? "MODIF" : "AJOUT";

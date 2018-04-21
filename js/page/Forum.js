@@ -201,9 +201,10 @@ class PageForum
         else{
             let commande = null;
             $("<div/>").append(response).find("#form_cat tr:gt(0)").each((i, elt) => {
-                let titreSujet = $(elt).find("td:eq(1)").text().trim(), id = $(elt).find("input[name='topic[]']").val();
+                let titreSujet = $(elt).find("td:eq(1)").text().trim(), id = -1;
                 // les lignes des commandes ont 3 td et du contenu
                 if(titreSujet){
+                    id = $(elt).find("a.topic_forum").attr("onclick").match(/\d+/)[0];
                     commande = new Commande();
                     this._commande[id] = commande.parseUtilitaire(id, $(elt).next().find("a").text(), titreSujet.split("] ")[0].split("[")[1], titreSujet.split("] ")[1].split(" / "), $(elt).find("td:last :not(a)").contents().filter(function(){return (this.nodeType === 3);}).text());
                 }
@@ -337,32 +338,34 @@ class PageForum
     */
     optionAdminCommande()
     {
-        let options = "";
-        for(let etat in ETAT_COMMANDE) options += `<option value="${ETAT_COMMANDE[etat]}">${etat}</option>`;
-        $("#form_cat td:last")
-            .prepend(`<img class="cursor" id="o_afficherEtat" src="${IMG_CHANGE}" height="16" alt="changer" title="Changer l'etat des commandes selectionnées"/>`)
-            .append(`<select id="o_selectEtatCommande" style="display:none;">${options}</select> <button id="o_changerEtat" style="display:none;">Modifier l'état</button>`);
-        $("#o_afficherEtat").click((e) => {$("#o_changerEtat, #o_selectEtatCommande").toggle();});
-        $("#o_changerEtat").click((e) => {
-            let promiseCmdModif = new Array();
-            $("#form_cat tr:gt(0)").each((i, elt) => {
-                // si la commande est selectionné
-                if($(elt).find("input[name='topic[]']:checked").length){
-                    let titreSujet = $(elt).find("td:eq(1)").text().trim(), id = $(elt).find("input[name='topic[]']").val();
-                    if(titreSujet){
-                        let commande = new Commande();
-                        commande.parseUtilitaire(id, $(elt).next().find("a").text(), titreSujet.split("] ")[0].split("[")[1], titreSujet.split("] ")[1].split(" / "));
-                        commande.etat = $("#o_selectEtatCommande").val();
-                        promiseCmdModif.push(this.modifierSujet(commande.toUtilitaire(), " ", id));
+        if($("img[src='images/icone/outil.gif']").length){
+            let options = "";
+            for(let etat in ETAT_COMMANDE) options += `<option value="${ETAT_COMMANDE[etat]}">${etat}</option>`;
+            $("#form_cat td:last")
+                .prepend(`<img class="cursor" id="o_afficherEtat" src="${IMG_CHANGE}" height="16" alt="changer" title="Changer l'etat des commandes selectionnées"/>`)
+                .append(`<select id="o_selectEtatCommande" style="display:none;">${options}</select> <button id="o_changerEtat" style="display:none;">Modifier l'état</button>`);
+            $("#o_afficherEtat").click((e) => {$("#o_changerEtat, #o_selectEtatCommande").toggle();});
+            $("#o_changerEtat").click((e) => {
+                let promiseCmdModif = new Array();
+                $("#form_cat tr:gt(0)").each((i, elt) => {
+                    // si la commande est selectionné
+                    if($(elt).find("input[name='topic[]']:checked").length){
+                        let titreSujet = $(elt).find("td:eq(1)").text().trim(), id = $(elt).find("input[name='topic[]']").val();
+                        if(titreSujet){
+                            let commande = new Commande();
+                            commande.parseUtilitaire(id, $(elt).next().find("a").text(), titreSujet.split("] ")[0].split("[")[1], titreSujet.split("] ")[1].split(" / "));
+                            commande.etat = $("#o_selectEtatCommande").val();
+                            promiseCmdModif.push(this.modifierSujet(commande.toUtilitaire(), " ", id));
+                        }
                     }
-                }
+                });
+                Promise.all(promiseCmdModif).then((values) => {
+                    $.toast({...TOAST_SUCCESS, text : promiseCmdModif.length > 1 ? "Commandes mises à jour avec succès." : "Commande mise à jour avec succès."});
+                    location.reload();
+                });
+                return false;
             });
-            Promise.all(promiseCmdModif).then((values) => {
-                $.toast({...TOAST_SUCCESS, text : promiseCmdModif.length > 1 ? "Commandes mises à jour avec succès." : "Commande mise à jour avec succès."});
-                location.reload();
-            });
-            return false;
-        });
+        }
         return this;
     }
 }
