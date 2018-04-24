@@ -23,6 +23,7 @@
          */
         /* global win, window */
 
+        window.requestAnimationFrame = window.requestAnimationFrame.bind(window);
         // glob is a temporary fix to allow our es-modules to work.
         var glob = typeof win === 'undefined' ? window : win,
             doc = glob.document,

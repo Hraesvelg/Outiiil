@@ -199,7 +199,7 @@ class Alliance
 				tooltip : {
 					crosshairs : [true],
 					formatter : function(){
-						let s = Highcharts.dateFormat("%A %e %b à %H:%M", new Date(this.x));
+						let s = Highcharts.dateFormat("%A %e %b", this.x);
 						$.each(this.points, function(){s += "<br/><span style='color:" + this.series.color + "'>\u25CF</span> " + this.series.name + ": <b>" + numeral(this.y).format() + "</b>";});
 						return s;
 					},
