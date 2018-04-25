@@ -9,9 +9,6 @@ class BoiteComptePlus
 {
     constructor()
     {
-        // Singleton : on affecte l'objet à l'instance globale
-        if(instanceBCP) return instanceBCP;
-        instanceBCP = this;
         // attribut de la classe
         this._ponte = [];
         this._startPonte = 0;
