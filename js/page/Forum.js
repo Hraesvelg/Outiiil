@@ -15,47 +15,12 @@ class PageForum
     {
         /**
         * liste des commandes.
-        *
-        * @private
-        * @property _commande
-        * @type Object
         */
         this._commande = {};
         /**
         * liste des joueurs.
-        *
-        * @private
-        * @property _joueurs
-        * @type Object
         */
         this._monAlliance = null;
-
-        if($("#alliance").length) this.optionAdmin();
-        // Récupération des données du forum pour communiquer.
-        $("#alliance").on("DOMNodeInserted", (e) => {
-            // ajoute les options pour outiiil
-            if($(e.currentTarget).find("div.simulateur").length) this.optionAdmin();
-            // on enregistre les id des topic si on utilise l'utilitaire
-            if(!monProfil.parametre["forumCommande"].valeur && $(e.currentTarget).find("span[class^='forum']:contains('Outiiil_Commande')").length){
-                monProfil.parametre["forumCommande"].valeur = $(e.currentTarget).find("span[class^='forum']:contains('Outiiil_Commande')").attr("class").match(/\d+/)[0];
-                monProfil.parametre["forumCommande"].sauvegarde();
-            }
-            if(!monProfil.parametre["forumMembre"].valeur && $(e.currentTarget).find("span[class^='forum']:contains('Outiiil_Membre')").length){
-                monProfil.parametre["forumMembre"].valeur = $(e.currentTarget).find("span[class^='forum']:contains('Outiiil_Membre')").attr("class").match(/\d+/)[0];
-                monProfil.parametre["forumMembre"].sauvegarde();
-            }
-            // selon la section ACTIVE on ajoute les outils necessaires
-            let forum = $(e.currentTarget).find("span[class^='forum'][class$='ligne_paire']");
-            switch(forum.html()){
-                case "Outiiil_Commande" :
-                    // on verifie si on n'est dans un sujet mais bien sur la liste des topics
-                    if($("#form_cat").length && !$("#o_afficherEtat").length)
-                        this.optionAdminCommande();
-                    break;
-                default :
-                    break;
-            }
-        });
     }
     /**
     *
@@ -190,7 +155,41 @@ class PageForum
             }
         });
     }
-        /**
+    /**
+    *
+    */
+    static executer()
+    {
+        // Récupération des données du forum pour communiquer.
+        let observer = new MutationObserver((mutationsList) => {
+            let page = new PageForum();
+            mutationsList.forEach((mutation) => {
+                // ajoute les options pour outiiil
+                if($(mutation.target).find("div.simulateur").length) page.optionAdmin();
+                // on enregistre les id des topic si on utilise l'utilitaire
+                if(!monProfil.parametre["forumCommande"].valeur && $(mutation.target).find("span[class^='forum']:contains('Outiiil_Commande')").length){
+                    monProfil.parametre["forumCommande"].valeur = $(mutation.target).find("span[class^='forum']:contains('Outiiil_Commande')").attr("class").match(/\d+/)[0];
+                    monProfil.parametre["forumCommande"].sauvegarde();
+                }
+                if(!monProfil.parametre["forumMembre"].valeur && $(mutation.target).find("span[class^='forum']:contains('Outiiil_Membre')").length){
+                    monProfil.parametre["forumMembre"].valeur = $(mutation.target).find("span[class^='forum']:contains('Outiiil_Membre')").attr("class").match(/\d+/)[0];
+                    monProfil.parametre["forumMembre"].sauvegarde();
+                }
+                // selon la section ACTIVE on ajoute les outils necessaires
+                switch($(mutation.target).find("span[class^='forum'][class$='ligne_paire']").html()){
+                    case "Outiiil_Commande" :
+                        // on verifie si on n'est dans un sujet mais bien sur la liste des topics
+                        if($("#form_cat").length && !$("#o_afficherEtat").length)
+                            page.optionAdminCommande();
+                        break;
+                    default :
+                        break;
+                }
+            });
+        });
+        observer.observe($("#alliance")[0], {childList : true});
+    }
+    /**
     *
     */
     chargerCommande(data)

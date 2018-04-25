@@ -15,20 +15,18 @@ class PageMessagerie
     {
         /**
         * Liste des messages analysés.
-        *
-        * @private
-        * @property messagesAnalyse
-        * @type Object
         */
         this._messagesOuvert = {};
         /**
         * Connexion à l'utilitaire.
-        *
-        * @private
-        * @property utilitaire
-        * @type Class
         */
         this._utilitaire = new PageForum();
+    }
+    /**
+    *
+    */
+    executer()
+    {
         // ajout des boutons pour les nouveaux messages
         if(!Utils.comptePlus) this.plus(0);
         // recupération des joueurs de l'utilitaire
@@ -43,6 +41,7 @@ class PageMessagerie
             this.couleurMessage();
         // Evenement lorsque de nouveaux elements sont affiches
         this.analyseMessage();
+        return this;
     }
     /**
     *

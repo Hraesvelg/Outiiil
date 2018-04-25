@@ -14,24 +14,23 @@ class PageProfil
     /**
     *
     */
-    constructor()
+    constructor(boiteRadar)
     {
         /**
-        *
+        * Creation du modele profil
         */
-        this._profil = new Joueur({pseudo : $("h2").text()});
+        this._profil = null;
         /**
-        *
+        * Acces à la boite radar
         */
-        this._boiteRadar = new BoiteRadar();
-        // Fonction d'initialisation de la classe
-        this.initialise();
+        this._boiteRadar = boiteRadar;
     }
     /**
     *
     */
-    initialise()
+    executer()
     {
+        this._profil = new Joueur({pseudo : $("h2").text()});
         let regexp = new RegExp("x=(\\d*) et y=(\\d*)"), ligne  = $(".boite_membre").find("a[href^='carte2.php?']").text();
         this._profil.x = ~~(ligne.replace(regexp, "$1"));
         this._profil.y = ~~(ligne.replace(regexp, "$2"));
@@ -64,6 +63,7 @@ class PageProfil
 			}
             this._boiteRadar.sauvegarder().actualiser();
 		});
+        return this;
     }
 	/**
 	* Récupére et Affiche l'historique du joueur.
@@ -77,6 +77,7 @@ class PageProfil
             <div id='o_bouton_range' class='o_group_bouton'><span id='o_selectHisto_1' class='active option_gestion ligne_paire' data='30'>30J</span><span id='o_selectHisto_2' class='option_gestion' data='90'>90J</span><span id='o_selectHisto_3' class='option_gestion' data='180'>180J</span><span id='o_selectHisto_4' class='option_gestion' data='all'>Tout</span></div>
             <div id='o_chartJoueur'></div></div>`);
         this._profil.getHistorique("o_chartJoueur");
+        return this;
 	}
     /**
     *
@@ -85,5 +86,6 @@ class PageProfil
     {
         // Affichage du temps de trajet
         $(".boite_membre:first div:first table").append(`<tr><td style='text-align:right'>Temps de trajet :</td><td>${Utils.intToTime(monProfil.getTempsParcours2(this._profil))}</td></tr>`);
+        return this;
     }
 }

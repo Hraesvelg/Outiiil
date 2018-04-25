@@ -11,16 +11,22 @@
 */
 class PageLaboratoire
 {
-    constructor()
+    constructor(boiteComptePlus)
     {
         /**
-        *
+        * Accés à la boite compte+
         */
-        this._boiteComptePlus = new BoiteComptePlus();
+        this._boiteComptePlus = boiteComptePlus;
         /**
-        *
+        * Armée du joueur pour calculer le rentabilité Armes et Bouclier
         */
         this._armee = new Armee();
+    }
+    /**
+    *
+    */
+    executer()
+    {
         // verification des niveaux
         let niveau = new Array(10);
         $(".ligneAmelioration").each((i, elt) => {niveau[i] = parseInt($(elt).find(".niveau_amelioration").text().split(" ")[1]);});
@@ -36,6 +42,7 @@ class PageLaboratoire
         });
         // Sauvegarde recherche
         if(!Utils.comptePlus) this.plus();
+        return this;
     }
     /**
     * Ajoute un title detaillé pour connaitre la rentabilité du niveau bouclier.
