@@ -11,12 +11,18 @@
 */
 class PageConstruction
 {
-    constructor()
+    constructor(boiteComptePlus)
     {
         /**
-        *
+        * Accés à la boite compte+
         */
-        this._boiteComptePlus = new BoiteComptePlus();
+        this._boiteComptePlus = boiteComptePlus;
+    }
+    /**
+    *
+    */
+    executer()
+    {
         // verification des niveaux
         let niveau = new Array(13);
         $(".ligneAmelioration").each((i, elt) => {niveau[i] = parseInt($(elt).find(".niveau_amelioration").text().split(" ")[1]);});
@@ -28,6 +34,7 @@ class PageConstruction
         if(!$(".desciption_amelioration:eq(11) table").find(".verificationOK").length) this.titleEtable();
         // Sauvegarde construction
         if(!Utils.comptePlus) this.plus();
+        return this;
     }
     /**
     * Ajoute un title detaillé pour connaitre la rentabilité de la construction : etable à pucerons.
@@ -52,6 +59,7 @@ class PageConstruction
             content : title,
             tooltipClass : "ui-tooltip-brown ui-tooltip-lightBrown"
         });
+        return this;
     }
 	/**
 	* Sauvegarde la construction en cours.
@@ -74,6 +82,7 @@ class PageConstruction
 				this._boiteComptePlus.startConstruction = 0;
                 this._boiteComptePlus.sauvegarder();
 			});
+        return this;
 	}
 	/**
 	* Sauvegarde la construction en cours.

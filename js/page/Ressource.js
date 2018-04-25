@@ -12,24 +12,26 @@
 */
 class PageRessource
 {
-    constructor()
+    constructor(boiteComptePlus)
     {
         /**
-        *
+        * Accés à la boite compte+
         */
-        this._boiteComptePlus = new BoiteComptePlus();
+        this._boiteComptePlus = boiteComptePlus;
         /**
-        *
+        * Nombre de chasse restante
         */
         this._nbChasse = monProfil.niveauRecherche[5] + 2 - $("#boite_tdc").text().split(/- Vos chasseuses vont conquérir/g).length;
         /**
-        * Armee.
-        *
-        * @private
-        * @property armee
-        * @type Class
+        * Armée du joueur pour envoyer des chasses
         */
         this._armee = new Armee();
+    }
+    /**
+    *
+    */
+    executer()
+    {
         this._armee.getArmee().then((data) => {
             this._armee.chargeData(data);
             // Ajout du lanceur de chasse
@@ -37,6 +39,7 @@ class PageRessource
         });
         // Sauvegarde les chasses en cours et ajoute les boutons max recolte
         if(!Utils.comptePlus) this.plus();
+        return this;
     }
 	/**
 	* Formulaire de lancement pour les chasses.
@@ -135,6 +138,7 @@ class PageRessource
                 $.toast({...TOAST_ERROR, text : "Vous n'avez pas d'armée à envoyer."});
             return false;
 		});
+        return this;
 	}
     /**
 	* Calcule les données de la chasse en fonction des valeurs souhaitées par le joueur.

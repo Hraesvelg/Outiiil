@@ -249,13 +249,10 @@ const DATEPICKER_OPTION  = {
             // Ajout des outils
             let boite = new Dock();
             boite.afficher();
-
             // boite compte plus
-            instanceBCP = null;
             let boiteComptePlus = new BoiteComptePlus();
             boiteComptePlus.afficher();
             // Boite radar
-            instanceBR = null;
             let boiteRadar = new BoiteRadar();
             boiteRadar.afficher();
 
@@ -271,46 +268,57 @@ const DATEPICKER_OPTION  = {
             // Routing
             switch (true){
                 case (uri == "/Reine.php") :
-                    page = new PageReine();
+                    page = new PageReine(boiteComptePlus);
+                    if(!Utils.comptePlus) page.plus();
                     break;
                 case (uri == "/construction.php") :
-                    page = new PageConstruction();
+                    page = new PageConstruction(boiteComptePlus);
+                    page.executer();
                     break;
                 case (uri == "/laboratoire.php") :
-                    page = new PageLaboratoire();
+                    page = new PageLaboratoire(boiteComptePlus);
+                    page.executer();
                     break;
                 case (uri == "/Ressources.php") :
-                    page = new PageRessource();
+                    page = new PageRessource(boiteComptePlus);
+                    page.executer();
                     break;
                 case (uri == "/Armee.php") :
-                    page = new PageArmee();
+                    page = new PageArmee(boiteComptePlus);
+                    page.executer();
                     break;
                 case (uri == "/commerce.php") :
-                    page = new PageCommerce();
+                    page = new PageCommerce(boiteComptePlus);
+                    page.executer();
                     break;
                 case (uri == "/messagerie.php") :
                     page = new PageMessagerie();
+                    page.executer();
                     break;
                 case (uri == "/alliance.php" && location.search == "") :
                 case (uri == "/chat.php") :
                     page = new PageChat();
+                    page.executer();
                     break;
                 case (location.href.indexOf("/alliance.php?forum_menu") > 0) :
-                    page = new PageForum();
+                    PageForum.executer();
                     break;
                 case (location.href.indexOf("/alliance.php?Membres") > 0) :
-                    page = new PageAlliance();
+                    PageAlliance.executer();
                     break;
                 case (location.href.indexOf("/Membre.php?Pseudo") > 0) :
                 case (uri == "/Membre.php") :
-                    page = new PageProfil();
+                    page = new PageProfil(boiteRadar);
+                    page.executer();
                     break;
                 case (uri == "/classementAlliance.php" && Utils.extractUrlParams()["alliance"] != "" && Utils.extractUrlParams()["alliance"] != undefined) :
-                    page = new PageDescription();
+                    page = new PageDescription(boiteRadar);
+                    page.executer();
                     break;
                 case (location.href.indexOf("/ennemie.php?Attaquer") > 0) :
                 case (location.href.indexOf("/ennemie.php?annuler") > 0) :
-                    page = new PageAttaquer();
+                    page = new PageAttaquer(boiteComptePlus);
+                    page.executer();
                     break;
                 case (uri == "/ennemie.php" && location.search == "") :
                     // Affichage des temps de trajet

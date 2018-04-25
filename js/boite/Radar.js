@@ -10,16 +10,11 @@ class BoiteRadar
     constructor()
     {
         /**
-        * Singleton : on affecte l'objet à l'instance globale
-        */
-        if(instanceBR) return instanceBR;
-        instanceBR = this;
-        /**
-        *
+        * liste des joueurs
         */
         this._joueurs = {};
         /**
-        *
+        * liste des alliances
         */
         this._alliances = {};
         // on recupére les données

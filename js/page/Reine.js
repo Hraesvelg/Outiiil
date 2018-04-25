@@ -12,19 +12,15 @@
 */
 class PageReine
 {
-    constructor()
+    constructor(boiteComptePlus)
     {
         /**
-        *
+        * Accés à la boite compte+
         */
-        this._boiteComptePlus = new BoiteComptePlus();
-        // ajout des outils compte+
-        if(!Utils.comptePlus) this.plus();
+        this._boiteComptePlus = boiteComptePlus;
     }
     /**
 	* Modifie les champs de saisie, sauvegarde la ponte en cours.
-    *
-	* @private
 	* @method plus
 	*/
 	plus()
@@ -85,8 +81,6 @@ class PageReine
 	}
 	/**
 	* Sauvegarde la ponte en cours.
-    *
-	* @private
 	* @method savePonte
 	*/
 	savePonte(listePonte)

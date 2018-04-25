@@ -14,26 +14,26 @@ class PageAlliance
     constructor()
     {
         /**
-        *
+        * Creation du modele Alliance
         */
         this._alliance = new Alliance({tag : Utils.alliance});
         /**
         * Connexion à l'utilitaire.
-        *
-        * @private
-        * @property utilitaire
-        * @type Class
         */
         this._utilitaire = new PageForum();
+    }
+    /**
+    *
+    */
+    static executer()
+    {
         // Ajout des infos sur le tableau des membres
-        if($("#tabMembresAlliance").length)
-            this.traitementMembre();
-        else{
-            $("#alliance").on("DOMNodeInserted", (e) => {
-                if($(e.target).find("table.simulateur").length)
-                    this.traitementMembre();
-            });
-        }
+        let observer = new MutationObserver((mutationsList) => {
+            let page = new PageAlliance();
+            page.traitementMembre();
+            observer.disconnect();
+        });
+        observer.observe($("#alliance")[0], {childList : true});
     }
     /**
 	* Affiche les modifications du tableau des membres.

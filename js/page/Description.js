@@ -11,18 +11,16 @@
 */
 class PageDescription
 {
-    constructor()
+    constructor(boiteRadar)
     {
         /**
-        *
+        * Creation de la classe modele d'une alliance
         */
         this._alliance = new Alliance({tag : Utils.extractUrlParams()["alliance"]});
         /**
         * Accés au radar
         */
-        this._boiteRadar = new BoiteRadar();
-
-        this.initialise();
+        this._boiteRadar = boiteRadar;
     }
     /**
     *
@@ -30,7 +28,7 @@ class PageDescription
 	* @method initialize
 	* @return
 	*/
-    initialise()
+    executer()
     {
         // Suppression du cadre classement
         $("#centre center:first").remove();

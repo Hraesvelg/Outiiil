@@ -14,9 +14,15 @@ class PageChat
     constructor()
     {
         /**
-        *
+        * Compteur pour l'autoactualisation
         */
         this._timeoutChat = -1;
+    }
+    /**
+    *
+    */
+    executer()
+    {
         // fonction plus
         if(!Utils.comptePlus) this.plus();
         // Couleur du texte
@@ -26,12 +32,13 @@ class PageChat
         // Reaffichage message
         this.afficheMessage();
         // Modification pour l'envoie du formulaire
-        $("#message").bind("keypress", (e) => {
+        $("#message").on("keypress", (e) => {
             let code = e.keyCode || e.which;
             if(code == 13)
                 this.parserMessage();
         });
         $("input[name='Envoyer']").click((e) => {this.parserMessage();});
+        return this;
     }
 	/**
 	* Change l'apparance de l'affichage des messages, "Pseudo (datetime) :" au lieu de "datetime pseudo :"
@@ -57,7 +64,7 @@ class PageChat
             texte.length && $("#message").val(`[i]${texte}[/i] // `).focus();
         });
         // ajotu du cite pour les nouveaux messages
-		$("#nouveauxMessages").bind("DOMNodeInserted", (e) => {
+		$("#nouveauxMessages").on("DOMNodeInserted", (e) => {
             let element = $(e.target);
 			if(element.is("p") && !element.hasClass("o_parsed")){
 				$(element).addClass("o_parsed");
@@ -75,7 +82,7 @@ class PageChat
 			}
 		});
         // ajout de l'event lorsqu'on actualise et que les nouveaux messages passent en anciens messages
-        $("#anciensMessages").bind("DOMNodeInserted", (e) => {
+        $("#anciensMessages").on("DOMNodeInserted", (e) => {
             $("span[id^='o_cite']").off().click((e) => {
                 let texte = this.citerMessage(e);
                 texte.length && $("#message").val(`[i]${texte}[/i] // `).focus();

@@ -11,12 +11,12 @@
 */
 class PageAttaquer
 {
-    constructor()
+    constructor(boiteComptePlus)
     {
         /**
-        *
+        * Accés à la boite compte+
         */
-        this._boiteComptePlus = new BoiteComptePlus();
+        this._boiteComptePlus = boiteComptePlus;
         /**
         *
         */
@@ -27,12 +27,14 @@ class PageAttaquer
         this._cible = new Joueur({pseudo : $("input[name=pseudoCible]").val()});
         /**
         * Armee.
-        *
-        * @private
-        * @property armee
-        * @type Class
         */
         this._armee = null;
+    }
+    /**
+    *
+    */
+    executer()
+    {
         if($("#tabChoixArmee").length){
             // récupération de l'armée
             this._armee = new Armee({unite : this.extraitArmee()});
@@ -49,6 +51,7 @@ class PageAttaquer
             });
         }
         if(!Utils.comptePlus) this.plus();
+        return this;
     }
     /**
     *

@@ -11,24 +11,22 @@
 */
 class PageCommerce
 {
-    constructor()
+    constructor(boiteComptePlus)
     {
         /**
-        * Acces à la boite c+.
-        *
-        * @private
-        * @property boiteComptePlus
-        * @type Class
+        * Accés à la boite compte+
         */
-        this._boiteComptePlus = new BoiteComptePlus();
+        this._boiteComptePlus = boiteComptePlus;
         /**
         * Connexion à l'utilitaire.
-        *
-        * @private
-        * @property utilitaire
-        * @type Class
         */
         this._utilitaire = new PageForum();
+    }
+    /**
+    *
+    */
+    executer()
+    {
         // ajout d'information
         $("form table").append(`<tr class='centre'><td colspan=6>Info : Niveau d'étable <strong>${monProfil.niveauConstruction[11]}</strong>, 1 ouvrière peut transporter : <strong>${(10 + (monProfil.niveauConstruction[11] / 2))}</strong> ressources.</td></tr>`);
         // ajout des boutons pour arrondir les quantités
@@ -67,6 +65,7 @@ class PageCommerce
             });
             this.formulaireConvoi();
         }
+        return this;
     }
 	/**
 	* Affiche les retours, et sauvegarde les convois en cours pour la boite compte plus.
