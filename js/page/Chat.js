@@ -145,7 +145,7 @@ class PageChat
     /**
     *
     */
-    actualiserMessage(nbTour = 2)
+    actualiserMessage(nbTour = 40)
     {
         if(nbTour){
             this.getMessage().then((data) => {
