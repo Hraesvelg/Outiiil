@@ -145,7 +145,7 @@ class PageChat
     /**
     *
     */
-    actualiserMessage(nbTour = 50)
+    actualiserMessage(nbTour = 40)
     {
         if(nbTour){
             this.getMessage().then((data) => {
@@ -157,9 +157,9 @@ class PageChat
             }, (jqXHR, textStatus, errorThrown) => {
                 $.toast({...TOAST_ERROR, text : "Mise à jour des messages impossible."});
             });
-            this._timeoutChat = setTimeout(() => {this.actualiserMessage(nbTour--);}, 5000);
+            this._timeoutChat = setTimeout(() => {this.actualiserMessage(--nbTour);}, 5000);
         }else
-            $("#o_autoActualiser").attr("checked", false);
+            $("#o_autoActualiser").prop("checked", false);
         return this;
     }
     /**
