@@ -265,10 +265,10 @@ class PageForum
                         this.modifierSection("Outiiil_Commande", idCat, "cache").then((data) => {
                             $.toast({...TOAST_SUCCESS, text : "La section commande a été correctement créée."});
                         }, (jqXHR, textStatus, errorThrown) => {
-                            $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la protection de la section commande."});
+                            $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la protection de la section commande."});
                         });
                     }, (jqXHR, textStatus, errorThrown) => {
-                        $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la création de la section commande."});
+                        $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la création de la section commande."});
                     });
                 }else
                     $.toast({...TOAST_WARNING, text : "Section commande est déjà créée !"});
@@ -281,10 +281,10 @@ class PageForum
                         this.modifierSection("Outiiil_Membre", idCat, "cache").then((data) => {
                             $.toast({...TOAST_SUCCESS, text : "La section membre a été correctement créée."});
                         }, (jqXHR, textStatus, errorThrown) => {
-                            $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la protection de la section membre."});
+                            $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la protection de la section membre."});
                         });
                     }, (jqXHR, textStatus, errorThrown) => {
-                        $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la création de la section membre."});
+                        $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la création de la section membre."});
                     });
                 }else
                     $.toast({...TOAST_WARNING, text : "Section membre est déjà créée !"});
@@ -321,10 +321,10 @@ class PageForum
                             // on creer les sujets
                             Promise.all(promiseJoueur).then((values) => {location.reload();});
                         },(jqXHR, textStatus, errorThrown) => {
-                             $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la récupération de la desciption."});
+                             $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la récupération de la desciption."});
                         });
                     }, (jqXHR, textStatus, errorThrown) => {
-                         $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la création de la section guerre."});
+                         $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la création de la section guerre."});
                     });
                 }else
                     $.toast({...TOAST_WARNING, text : `La section "Guerre ${alliance.tag}" existe déjà !`});

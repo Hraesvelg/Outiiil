@@ -333,7 +333,7 @@ class Commande
                     $.toast({...TOAST_INFO, text : "Commande supprimée avec succès."});
                     page.actualiserCommande();
                 }, (jqXHR, textStatus, errorThrown) => {
-                    $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la mise à jour des commandes."});
+                    $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la mise à jour des commandes."});
                 });
             }
             return false;

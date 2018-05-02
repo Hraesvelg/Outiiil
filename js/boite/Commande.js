@@ -89,7 +89,7 @@ class BoiteCommande extends Boite
                         $.toast({...TOAST_SUCCESS, text : "Commande ajoutée avec succès."});
                         this._page.actualiserCommande();
                     }, (jqXHR, textStatus, errorThrown) => {
-                         $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de l'ajout de votre commande."});
+                         $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de l'ajout de votre commande."});
                     });
                 }else{
                     // si la commande est deja dans l'utilitaire c'est qu'on la modifie sinon c'est un ajout
@@ -97,7 +97,7 @@ class BoiteCommande extends Boite
                         $.toast({...TOAST_INFO, text : "Commande mise à jour avec succès."});
                         this._page.actualiserCommande();
                     }, (jqXHR, textStatus, errorThrown) => {
-                         $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la mise à jour des commandes."});
+                         $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la mise à jour des commandes."});
                     });
                 }
                 this.masquer();

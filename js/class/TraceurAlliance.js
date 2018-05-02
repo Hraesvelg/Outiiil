@@ -69,10 +69,10 @@ class TraceurAlliance extends Traceur
                         }else
                             $.toast({...TOAST_ERROR, text : donnees.message});
                     }, (jqXHR, textStatus, errorThrown) => {
-                        $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la sauvegarde des données du traceur."});
+                        $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la sauvegarde des données du traceur."});
                     });
                 }, (jqXHR, textStatus, errorThrown) => {
-                    $.toast({...TOAST_ERROR, text : "Une erreur a été rencntrée lors de la récupération du classement alliance."});
+                    $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencntrée lors de la récupération du classement alliance."});
                 });
             }else{
                 setTimeout(() => {this.tracer();}, tempsMAJ * 1000);

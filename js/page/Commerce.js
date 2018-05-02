@@ -61,7 +61,7 @@ class PageCommerce
             this._utilitaire.consulterSection(monProfil.parametre["forumCommande"].valeur).then((data) => {
                 if(this._utilitaire.chargerCommande(data)) this.afficherCommande();
             }, (jqXHR, textStatus, errorThrown) => {
-                $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la récupération des commandes."});
+                $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la récupération des commandes."});
             });
             this.formulaireConvoi();
         }
@@ -228,7 +228,7 @@ class PageCommerce
                         });
                     }
                 }, (jqXHR, textStatus, errorThrown) => {
-                     $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la récupération des convois."});
+                     $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la récupération des convois."});
                 });
             }
             this.plus();
@@ -275,16 +275,16 @@ class PageCommerce
                             this._utilitaire.modifierSujet(this._utilitaire.commande[cmdSuivante].toUtilitaire(), " ", cmdSuivante).then((data) => {
                                 $.toast({...TOAST_SUCCESS, text : "Nouvelle commande en cours à jour."});
                             }, (jqXHR, textStatus, errorThrown) => {
-                                $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la mise à jour des commandes."});
+                                $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la mise à jour des commandes."});
                             });
                         }
                         // Lancement du convoi dans fourmizzz
                         $("input[name='convoi']").trigger("click");
                     }, (jqXHR, textStatus, errorThrown) => {
-                         $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la mise à jour des commandes."});
+                         $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la mise à jour des commandes."});
                     });
                 }, (jqXHR, textStatus, errorThrown) => {
-                    $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de l'enregistrement de votre convoi."});
+                    $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de l'enregistrement de votre convoi."});
                 });
                 $("#o_idCommande").val("-1");
             }
