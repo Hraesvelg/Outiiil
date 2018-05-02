@@ -4,7 +4,7 @@
  **********************************************************************/
 
 /**
-* Classe pour creer et gérer un joueur
+* Classe pour creer et gérer une alliance
 *
 * @class Alliance
 */

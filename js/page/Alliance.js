@@ -27,12 +27,18 @@ class PageAlliance
     */
     executer()
     {
-        // Ajout des infos sur le tableau des membres
-        let observer = new MutationObserver((mutationsList) => {
+        // si les membres sont deja chargé on peux executé la fonction sinon on observe
+        if($("#tabMembresAlliance").length)
             this.traitementMembre();
-            observer.disconnect();
-        });
-        observer.observe($("#alliance")[0], {childList : true});
+        else{
+            // Ajout des infos sur le tableau des membres
+            let observer = new MutationObserver((mutationsList) => {
+                this.traitementMembre();
+                observer.disconnect();
+            });
+            observer.observe($("#alliance")[0], {childList : true});
+        }
+        return this;
     }
     /**
 	* Affiche les modifications du tableau des membres.
