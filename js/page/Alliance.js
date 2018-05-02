@@ -25,12 +25,11 @@ class PageAlliance
     /**
     *
     */
-    static executer()
+    executer()
     {
         // Ajout des infos sur le tableau des membres
         let observer = new MutationObserver((mutationsList) => {
-            let page = new PageAlliance();
-            page.traitementMembre();
+            this.traitementMembre();
             observer.disconnect();
         });
         observer.observe($("#alliance")[0], {childList : true});
@@ -80,7 +79,7 @@ class PageAlliance
             this._utilitaire.consulterSection(monProfil.parametre["forumMembre"].valeur).then((data) => {
                 if(this._utilitaire.chargerJoueur(data)) this.traitementUtilitaire();
             }, (jqXHR, textStatus, errorThrown) => {
-                $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la récupération des membres."});
+                $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la récupération des membres."});
             });
         }else
             this.tableau();

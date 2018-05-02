@@ -35,7 +35,7 @@ class PageMessagerie
             this._utilitaire.consulterSection(monProfil.parametre["forumMembre"].valeur).then((data) => {
                 if(this._utilitaire.chargerJoueur(data)) this.couleurMessageUtilitaire();
             }, (jqXHR, textStatus, errorThrown) => {
-                $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la récupération des membres."});
+                $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la récupération des membres."});
             });
         }else
             this.couleurMessage();

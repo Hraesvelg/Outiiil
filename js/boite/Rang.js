@@ -75,7 +75,7 @@ class BoiteRang extends Boite
                 $.toast({...TOAST_INFO, text : "Mise à jour correctement effectuée."});
                 this._page.actualiserMembre();
             }, (jqXHR, textStatus, errorThrown) => {
-                $.toast({...TOAST_ERROR, text : "Une erreur a été rencontrée lors de la mise à jour des membres de l'alliance."});
+                $.toast({...TOAST_ERROR, text : "Une erreur réseau a été rencontrée lors de la mise à jour des membres de l'alliance."});
             });
             this.masquer();
             return false;

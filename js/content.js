@@ -301,10 +301,12 @@ const DATEPICKER_OPTION  = {
                     page.executer();
                     break;
                 case (location.href.indexOf("/alliance.php?forum_menu") > 0) :
-                    PageForum.executer();
+                    page = new PageForum();
+                    page.executer();
                     break;
                 case (location.href.indexOf("/alliance.php?Membres") > 0) :
-                    PageAlliance.executer();
+                    page = new PageAlliance();
+                    page.executer();
                     break;
                 case (location.href.indexOf("/Membre.php?Pseudo") > 0) :
                 case (uri == "/Membre.php") :
