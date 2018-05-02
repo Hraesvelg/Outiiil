@@ -25,12 +25,11 @@ class PageAlliance
     /**
     *
     */
-    static executer()
+    executer()
     {
         // Ajout des infos sur le tableau des membres
         let observer = new MutationObserver((mutationsList) => {
-            let page = new PageAlliance();
-            page.traitementMembre();
+            this.traitementMembre();
             observer.disconnect();
         });
         observer.observe($("#alliance")[0], {childList : true});

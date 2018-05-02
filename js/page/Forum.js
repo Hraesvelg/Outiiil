@@ -158,14 +158,13 @@ class PageForum
     /**
     *
     */
-    static executer()
+    executer()
     {
         // Récupération des données du forum pour communiquer.
         let observer = new MutationObserver((mutationsList) => {
-            let page = new PageForum();
             mutationsList.forEach((mutation) => {
                 // ajoute les options pour outiiil
-                if($(mutation.target).find("div.simulateur").length) page.optionAdmin();
+                if($(mutation.target).find("div.simulateur").length) this.optionAdmin();
                 // on enregistre les id des topic si on utilise l'utilitaire
                 if(!monProfil.parametre["forumCommande"].valeur && $(mutation.target).find("span[class^='forum']:contains('Outiiil_Commande')").length){
                     monProfil.parametre["forumCommande"].valeur = $(mutation.target).find("span[class^='forum']:contains('Outiiil_Commande')").attr("class").match(/\d+/)[0];
@@ -180,7 +179,7 @@ class PageForum
                     case "Outiiil_Commande" :
                         // on verifie si on n'est dans un sujet mais bien sur la liste des topics
                         if($("#form_cat").length && !$("#o_afficherEtat").length)
-                            page.optionAdminCommande();
+                            this.optionAdminCommande();
                         break;
                     default :
                         break;
