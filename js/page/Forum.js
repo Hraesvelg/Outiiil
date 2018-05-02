@@ -160,33 +160,44 @@ class PageForum
     */
     executer()
     {
+        // si le forum est deja chargé lance le traitement
+        if($("#cat_forum").length) this.traitementSection("#alliance");
         // Récupération des données du forum pour communiquer.
         let observer = new MutationObserver((mutationsList) => {
             mutationsList.forEach((mutation) => {
-                // ajoute les options pour outiiil
-                if($(mutation.target).find("div.simulateur").length) this.optionAdmin();
-                // on enregistre les id des topic si on utilise l'utilitaire
-                if(!monProfil.parametre["forumCommande"].valeur && $(mutation.target).find("span[class^='forum']:contains('Outiiil_Commande')").length){
-                    monProfil.parametre["forumCommande"].valeur = $(mutation.target).find("span[class^='forum']:contains('Outiiil_Commande')").attr("class").match(/\d+/)[0];
-                    monProfil.parametre["forumCommande"].sauvegarde();
-                }
-                if(!monProfil.parametre["forumMembre"].valeur && $(mutation.target).find("span[class^='forum']:contains('Outiiil_Membre')").length){
-                    monProfil.parametre["forumMembre"].valeur = $(mutation.target).find("span[class^='forum']:contains('Outiiil_Membre')").attr("class").match(/\d+/)[0];
-                    monProfil.parametre["forumMembre"].sauvegarde();
-                }
-                // selon la section ACTIVE on ajoute les outils necessaires
-                switch($(mutation.target).find("span[class^='forum'][class$='ligne_paire']").html()){
-                    case "Outiiil_Commande" :
-                        // on verifie si on n'est dans un sujet mais bien sur la liste des topics
-                        if($("#form_cat").length && !$("#o_afficherEtat").length)
-                            this.optionAdminCommande();
-                        break;
-                    default :
-                        break;
-                }
+                this.traitementSection(mutation.target);
             });
         });
         observer.observe($("#alliance")[0], {childList : true});
+        return this;
+    }
+    /**
+    *
+    */
+    traitementSection(element)
+    {
+        // ajoute les options pour outiiil
+        if($(element).find("div.simulateur").length) this.optionAdmin();
+        // on enregistre les id des topic si on utilise l'utilitaire
+        if(!monProfil.parametre["forumCommande"].valeur && $(element).find("span[class^='forum']:contains('Outiiil_Commande')").length){
+            monProfil.parametre["forumCommande"].valeur = $(element).find("span[class^='forum']:contains('Outiiil_Commande')").attr("class").match(/\d+/)[0];
+            monProfil.parametre["forumCommande"].sauvegarde();
+        }
+        if(!monProfil.parametre["forumMembre"].valeur && $(element).find("span[class^='forum']:contains('Outiiil_Membre')").length){
+            monProfil.parametre["forumMembre"].valeur = $(element).find("span[class^='forum']:contains('Outiiil_Membre')").attr("class").match(/\d+/)[0];
+            monProfil.parametre["forumMembre"].sauvegarde();
+        }
+        // selon la section ACTIVE on ajoute les outils necessaires
+        switch($(element).find("span[class^='forum'][class$='ligne_paire']").html()){
+            case "Outiiil_Commande" :
+                // on verifie si on n'est dans un sujet mais bien sur la liste des topics
+                if($("#form_cat").length && !$("#o_afficherEtat").length)
+                    this.optionAdminCommande();
+                break;
+            default :
+                break;
+        }
+        return this;
     }
     /**
     *
