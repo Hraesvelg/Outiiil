@@ -95,7 +95,7 @@ class PageChat
     */
     getMessage()
     {
-        return $.ajax({url : "appelAjax.php", data : "actualiserChat=" + ($(".titre:first").text().includes("Alliance") ? "alliance" : "general")});
+        return $.ajax({url : "http://" + Utils.serveur + ".fourmizzz.fr/appelAjax.php", data : "actualiserChat=" + ($(".titre:first").text().includes("Alliance") ? "alliance" : "general")});
     }
 	/**
 	* Ajoute la Couleur, options de chat.
