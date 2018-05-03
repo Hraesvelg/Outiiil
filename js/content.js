@@ -162,8 +162,8 @@ const LISTESMILEY6       = `<img src='images/carte/rien.gif' width='1' height='3
        <img src='images/smiley/plane.gif' onclick='addRaccourciSmiley("message","plane")'>`;
 // Image diverses de fourmizzz
 const IMG_FLECHE         = "<img src='images/icone/fleche-bas-claire.png' style='vertical-align:1px;' alt='changer' height='8'>";
-const IMG_POMME          = "<img src='images/icone/icone_pomme.gif' alt='Consommation Journalière' class='o_vAlign' height='18' title='Consommation Journalière' />";
-const IMG_MAT            = "<img src='images/icone/icone_bois.gif' height='18'/>";
+const IMG_POMME          = "<img src='images/icone/icone_pomme.gif' alt='Nourriture' class='o_vAlign' height='18' title='Consommation Journalière' />";
+const IMG_MAT            = "<img src='images/icone/icone_bois.gif' alt='Materiaux' height='18'/>";
 const IMG_VIE            = "<img src='images/icone/icone_coeur.gif' class='o_vAlign' height='18' width='18'/>";
 const IMG_ATT            = "<img src='images/icone/icone_degat_attaque.gif'  alt='Dégâts en attaque :' class='o_vAlign'height='18' title='Dégâts en attaque :' />";
 const IMG_DEF            = "<img src='images/icone/icone_degat_defense.gif' alt='Dégâts en défense :' class='o_vAlign' height='18' title='Dégâts en défense :' />";
